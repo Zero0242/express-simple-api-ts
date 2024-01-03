@@ -1,0 +1,7 @@
+# Archivos
+.env
+
+# Directorios
+node_modules/
+dist/
+coverage/

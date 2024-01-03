@@ -12,5 +12,8 @@ app.use(cors({ origin: "*" }));
 
 /* Configuracion Rutas */
 app.use("/auth", AuthRoutes);
+app.get("/", (req, res) => {
+  res.status(301).redirect("https://youtu.be/dQw4w9WgXcQ?si=P5AMGm5vFQwiutcA");
+});
 
 export default app;

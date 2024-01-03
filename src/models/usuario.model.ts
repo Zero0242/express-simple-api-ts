@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 
 /* Interface */
-export interface IUsuario {
+interface IUsuario {
   nombre: string;
   email: string;
   password: string;
 }
 /* Interface Registro */
-export interface UsuarioDoc extends mongoose.Document {
+interface UsuarioDoc extends mongoose.Document {
   nombre: string;
   email: string;
   password: string;
@@ -44,7 +44,9 @@ usuarioSchema.statics.build = (attr: IUsuario) => {
   return new Usuario(attr);
 };
 
-export const Usuario = mongoose.model<UsuarioDoc, UsuarioModelInterface>(
+const Usuario = mongoose.model<UsuarioDoc, UsuarioModelInterface>(
   "usuario",
   usuarioSchema
 );
+
+export { Usuario, IUsuario, UsuarioDoc };

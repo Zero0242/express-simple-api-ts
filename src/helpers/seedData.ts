@@ -8,11 +8,11 @@ const makeShops = (registros: number = 30): IShop[] => {
       nombre: faker.company.name(),
       description: faker.company.catchPhrase(),
       galeria: makeGallery(),
-      coords: {
-        latitude: faker.location.latitude({ max: -41, min: -18, precision: 5 }),
+      location: {
+        latitude: faker.location.latitude({ min: -41, max: -18, precision: 5 }),
         longitude: faker.location.longitude({
-          max: -72,
-          min: -68,
+          min: -72,
+          max: -68,
           precision: 5,
         }),
       },

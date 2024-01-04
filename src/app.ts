@@ -3,7 +3,6 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import { AuthRoutes, PostRoutes, ShopRoutes } from "./routes";
-import { errorResponder } from "./middleware/";
 
 const app = express();
 
@@ -19,5 +18,4 @@ app.use("/auth", AuthRoutes);
 app.use("/api/post", PostRoutes);
 app.use("/api/shop", ShopRoutes);
 
-app.use(errorResponder);
 export default app;

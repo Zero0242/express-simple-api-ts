@@ -4,8 +4,11 @@ import { errorResponse } from "../helpers";
 
 const adminGuard = (req: Request, res: Response, next: NextFunction) => {
   // @ts-ignore
+  console.log(req.userIsAdmin);
+
+  // @ts-ignore
   if (req.userIsAdmin) {
-    next();
+    return next();
   }
 
   return errorResponse({ res, message: "Usuario no autorizado" });

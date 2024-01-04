@@ -9,14 +9,14 @@ interface IShop {
   nombre: string;
   description: string;
   galeria: string[];
-  coords: Location;
+  location: Location;
 }
 
 interface ShopDoc extends Document {
   nombre: string;
   description: string;
   galeria: string[];
-  coords: Location;
+  location: Location;
 }
 
 interface ShopModelInterface extends Model<ShopDoc> {
@@ -29,10 +29,7 @@ const locationSchema = new Schema(
     latitude: Number,
     longitude: Number,
   },
-  {
-    autoIndex: false,
-    timestamps: false,
-  }
+  { _id: false }
 );
 
 const shopSchema: Schema = new Schema(
@@ -43,7 +40,9 @@ const shopSchema: Schema = new Schema(
       type: [String],
       index: true,
     },
-    location: locationSchema,
+    location: {
+      type: locationSchema,
+    },
   },
   {
     timestamps: true,

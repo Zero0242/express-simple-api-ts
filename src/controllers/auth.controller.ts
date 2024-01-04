@@ -10,7 +10,7 @@ const loginGet = async (req: Request, res: Response): AsyncResponse => {
     const id: string = req.user;
     const usuario: UsuarioDoc | null = await Usuario.findById(id);
     if (!usuario) throw new Error("Credenciales Incorrectas");
-    const token = signJWT(usuario.id);
+    const token = signJWT({ id: usuario.id, rol: usuario.rol });
     return res.json({ ok: true, usuario, token });
   } catch (error) {
     return errorResponse({ res, message: "No Autorizado" });
@@ -23,7 +23,7 @@ const loginPost = async (req: Request, res: Response): AsyncResponse => {
     if (!usuario) throw new Error("Credenciales Incorrectas");
     const validPassword = bcrypt.compareSync(password, usuario.password);
     if (!validPassword) throw new Error("Credenciales Incorrectas");
-    const token = signJWT(usuario.id);
+    const token = signJWT({ id: usuario.id, rol: usuario.rol });
     return res.json({ ok: true, usuario, token });
   } catch (error) {
     return errorResponse({ res, message: "Credenciales Incorrectas" });

@@ -44,8 +44,10 @@ const postSchema: Schema = new Schema(
   { timestamps: true }
 );
 
-const Post = model<PostDoc, PostModelInterface>("post", postSchema);
+postSchema.statics.build = (attr: IPost) => {
+  return new Post(attr);
+};
 
-postSchema.statics.build = (attr: IPost) => new Post(attr);
+const Post = model<PostDoc, PostModelInterface>("post", postSchema);
 
 export { Post, IPost, PostDoc };

@@ -1,2 +1,2 @@
-export * from './auth.schemas'
-export * from './post.schemas'
+export * from './authSchemas'
+export * from './postSchemas'

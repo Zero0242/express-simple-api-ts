@@ -16,4 +16,13 @@ const fillShops = async (req: Request, res: Response): AsyncResponse => {
   });
 };
 
-export { fillShops };
+const getAllShops = async (req: Request, res: Response): AsyncResponse => {
+  const shops: ShopDoc[] = await Shop.find({});
+
+  return res.json({
+    ok: true,
+    shops,
+  });
+};
+
+export { fillShops, getAllShops };

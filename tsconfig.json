@@ -6,7 +6,8 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "moduleResolution": "Node",
     "forceConsistentCasingInFileNames": true
   },
-  "exclude": ["node_modules","tests"]
+  "exclude": ["node_modules", "tests"]
 }

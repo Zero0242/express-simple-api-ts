@@ -8,5 +8,6 @@ const MONGO_CNN =
 
 const JWT_KEY = process.env.JWT_KEY;
 const JWT_DURATION = process.env.JWT_DURATION;
+const NODE_ENV = process.env.NODE_ENV ?? "dev";
 
-export { PORT, MONGO_CNN, JWT_KEY, JWT_DURATION };
+export { PORT, MONGO_CNN, JWT_KEY, JWT_DURATION, NODE_ENV };

@@ -7,7 +7,11 @@ import { AuthRoutes, PostRoutes, ShopRoutes } from "./routes";
 const app = express();
 
 /* Configuracion Middleware */
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 app.use(express.json());
 app.use(express.static("public"));
 app.use(morgan("dev"));

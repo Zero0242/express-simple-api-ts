@@ -1,11 +1,10 @@
-import app from "./app";
+/* import app from "./app";
 import { Server } from "socket.io";
 import { createServer, Server as HttpServer } from "http";
 
 const httpServer: HttpServer = createServer(app);
 
 const io = new Server(httpServer, {
-  /* options */
 });
 
 io.use(async (socket, next) => {
@@ -40,3 +39,4 @@ io.on("connect", (socket) => {
 });
 
 export default httpServer;
+ */

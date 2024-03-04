@@ -25,4 +25,17 @@ const getAllShops = async (req: Request, res: Response): AsyncResponse => {
   });
 };
 
-export { fillShops, getAllShops };
+const registerShop = async (req: Request, res: Response): AsyncResponse => {
+  const { description, nombre, latitude, longitude } = req.body;
+  const shopQuery: ShopDoc = Shop.build({
+    description,
+    nombre,
+    location: { latitude, longitude },
+  });
+
+  const shop = await shopQuery.save();
+
+  return res.json({ ok: true, shop });
+};
+
+export { fillShops, getAllShops, registerShop };

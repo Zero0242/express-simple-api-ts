@@ -1,14 +1,10 @@
 import { Schema, Document, Model, model } from "mongoose";
-
-interface Location {
-  latitude: number;
-  longitude: number;
-}
+import { locationSchema, Location } from "./location.model";
 
 interface IShop {
   nombre: string;
   description: string;
-  galeria: string[];
+  galeria?: string[];
   location: Location;
 }
 
@@ -24,14 +20,6 @@ interface ShopModelInterface extends Model<ShopDoc> {
   buildMany(attr: IShop[]): ShopDoc[];
 }
 
-const locationSchema = new Schema(
-  {
-    latitude: Number,
-    longitude: Number,
-  },
-  { _id: false }
-);
-
 const shopSchema: Schema = new Schema(
   {
     nombre: String,
@@ -39,6 +27,7 @@ const shopSchema: Schema = new Schema(
     galeria: {
       type: [String],
       index: true,
+      default: [],
     },
     location: {
       type: locationSchema,

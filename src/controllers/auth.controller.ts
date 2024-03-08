@@ -2,6 +2,7 @@ import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import fileUpload from "express-fileupload";
 import { join } from "path";
+import fs from "fs";
 import { v4 as uuid } from "uuid";
 import { Usuario, UsuarioDoc } from "../models";
 import { AsyncResponse } from "../interfaces";
@@ -10,10 +11,10 @@ import { errorResponse, signJWT } from "../helpers/";
 const loginGet = async (req: Request, res: Response): AsyncResponse => {
   try {
     //@ts-ignore
-    const id: string = req.user;
-    const usuario: UsuarioDoc | null = await Usuario.findById(id);
-    if (!usuario) throw new Error("Credenciales Incorrectas");
-    const token = signJWT({ id: usuario.id, rol: usuario.rol });
+    const id: string = req.uid;
+    //@ts-ignore
+    const usuario: UsuarioDoc = req.user;
+    const token = signJWT({ id: usuario.id });
     return res.json({ ok: true, usuario, token });
   } catch (error) {
     return errorResponse({ res, message: "No Autorizado" });
@@ -26,7 +27,7 @@ const loginPost = async (req: Request, res: Response): AsyncResponse => {
     if (!usuario) throw new Error("Credenciales Incorrectas");
     const validPassword = bcrypt.compareSync(password, usuario.password);
     if (!validPassword) throw new Error("Credenciales Incorrectas");
-    const token = signJWT({ id: usuario.id, rol: usuario.rol });
+    const token = signJWT({ id: usuario.id });
     return res.json({ ok: true, usuario, token });
   } catch (error) {
     return errorResponse({ res, message: "Credenciales Incorrectas" });
@@ -51,21 +52,32 @@ const registrarPost = async (req: Request, res: Response): AsyncResponse => {
 
 const updateAvatar = async (req: Request, res: Response): AsyncResponse => {
   try {
-    if (!req.files || !req.files.file) {
+    if (!req.files || !req.files.archivo) {
       throw new Error("Archivo no seleccionado");
     }
 
-    const file = req.files.file as fileUpload.UploadedFile;
+    const file = req.files.archivo as fileUpload.UploadedFile;
     const extension: string = file.mimetype.split("/")[1];
-    const validExtensions = ["png", "jpg", "jpeg"];
+    const validExtensions = ["png", "jpg", "jpeg", "gif"];
     if (!validExtensions.includes(extension)) {
       throw new Error("Not valid file extension");
     }
+    // * Proceso subida de imagen
     //@ts-ignore
-    const id: string = req.user;
-    //const usuario: UsuarioDoc | null = await Usuario.findById(id);
-    const relativePath = `/uploads/${uuid()}.${extension}`;
-    const uploadPath = join(__dirname, "..", "..", "/public", relativePath);
+    const id: string = req.uid;
+    //@ts-ignore
+    const user: UsuarioDoc = req.user;
+    const uploadsFolder = join(__dirname, "..", "..", "/public");
+    if (user.avatar!=="") {
+      const avatarPath = join(uploadsFolder, user.avatar);
+      if (fs.existsSync(avatarPath)) {
+        fs.unlinkSync(avatarPath);
+      }
+    }
+
+    const relativePath = `/uploads/users/${uuid()}.${extension}`;
+
+    const uploadPath = join(uploadsFolder, relativePath);
 
     await file.mv(uploadPath);
     const usuario = await Usuario.findByIdAndUpdate(
@@ -75,13 +87,11 @@ const updateAvatar = async (req: Request, res: Response): AsyncResponse => {
     );
     return res.json({ ok: true, usuario });
   } catch (error: any) {
-    return res
-      .status(400)
-      .json({
-        ok: false,
-        msg: "Error al subir archivo",
-        error: error.message.toString(),
-      });
+    return res.status(400).json({
+      ok: false,
+      msg: "Error al subir archivo",
+      error: error.message.toString(),
+    });
   }
 };
 

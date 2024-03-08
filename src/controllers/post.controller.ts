@@ -22,7 +22,7 @@ const getAllPost = async (req: Request, res: Response): AsyncResponse => {
 const getUserPost = async (req: Request, res: Response): AsyncResponse => {
   try {
     //@ts-ignore
-    const user: string = req.user;
+    const user: string = req.uid;
     const posts: PostDoc[] = await Post.find({ user });
     return res.json({ ok: true, posts });
   } catch (e) {
@@ -33,7 +33,7 @@ const getUserPost = async (req: Request, res: Response): AsyncResponse => {
 const makePost = async (req: Request, res: Response): AsyncResponse => {
   try {
     //@ts-ignore
-    const user: string = req.user;
+    const user: string = req.uid;
     const { descripcion, titulo } = req.body;
     const postQuery: PostDoc = Post.build({ descripcion, titulo, user });
     const post: PostDoc = await postQuery.save();
@@ -46,7 +46,7 @@ const makePost = async (req: Request, res: Response): AsyncResponse => {
 const updatePost = async (req: Request, res: Response): AsyncResponse => {
   try {
     //@ts-ignore
-    const user: string = req.user;
+    const user: string = req.uid;
     const { id } = req.params;
     const { descripcion, titulo, privado } = req.body;
 
@@ -69,7 +69,7 @@ const updatePost = async (req: Request, res: Response): AsyncResponse => {
 const deletePost = async (req: Request, res: Response): AsyncResponse => {
   try {
     //@ts-ignore
-    const user: string = req.user;
+    const user: string = req.uid;
     const { id } = req.params;
     const validSelection = await checkValidity(id, user);
     if (!validSelection) throw new Error("Post no encontrado");

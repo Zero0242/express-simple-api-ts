@@ -1,7 +1,12 @@
 import { NextFunction, Request, Response } from "express";
 import { checkJWT, errorResponse } from "../helpers";
+import { Usuario, UsuarioDoc } from "../models";
 
-export const authGuard = (req: Request, res: Response, next: NextFunction) => {
+export const authGuard = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { authorization } = req.headers;
     if (!authorization) throw new Error("No Autorizado");
@@ -11,10 +16,12 @@ export const authGuard = (req: Request, res: Response, next: NextFunction) => {
     const decodedUser = checkJWT(token);
     // @ts-ignore
     const { id, rol } = decodedUser.payload;
+    const usuario: UsuarioDoc | null = await Usuario.findById(id);
+    if (!usuario) throw new Error("No Existe");
     // @ts-ignore
-    req.user = id;
+    req.uid = id;
     // @ts-ignore
-    req.userIsAdmin = rol === "ADMIN";
+    req.user = usuario;
     next();
   } catch (error) {
     return errorResponse({ res, message: "No Autorizado" });

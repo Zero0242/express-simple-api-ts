@@ -18,7 +18,7 @@ interface IUsuario {
 interface UsuarioDoc extends mongoose.Document {
   nombre: string;
   email: string;
-  avatar?: string;
+  avatar: string;
   password: string;
   rol: "ADMIN" | "USER";
 }
@@ -45,6 +45,7 @@ const usuarioSchema: mongoose.Schema = new mongoose.Schema(
     },
     avatar: {
       type: String,
+      default: "",
     },
     rol: {
       type: String,

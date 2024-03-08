@@ -1,6 +1,11 @@
 import { Router } from "express";
 import { checkSchema } from "express-validator/src/middlewares/schema";
-import { loginGet, loginPost, registrarPost } from "../controllers";
+import {
+  loginGet,
+  loginPost,
+  registrarPost,
+  updateAvatar,
+} from "../controllers";
 import { authGuard, fieldValidator } from "../middleware";
 import { registerSchema } from "../schema";
 
@@ -13,5 +18,7 @@ router.post(
   [checkSchema(registerSchema, ["body"]) as any, fieldValidator],
   registrarPost
 );
+
+router.post("/avatarset", [authGuard], updateAvatar);
 
 export default router;

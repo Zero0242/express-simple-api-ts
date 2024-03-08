@@ -11,12 +11,14 @@ const RolesUsuarios = {
 interface IUsuario {
   nombre: string;
   email: string;
+  avatar?: string;
   password: string;
 }
 /* Interface Registro */
 interface UsuarioDoc extends mongoose.Document {
   nombre: string;
   email: string;
+  avatar?: string;
   password: string;
   rol: "ADMIN" | "USER";
 }
@@ -40,6 +42,9 @@ const usuarioSchema: mongoose.Schema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+    avatar: {
+      type: String,
     },
     rol: {
       type: String,

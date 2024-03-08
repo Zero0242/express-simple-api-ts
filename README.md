@@ -2,38 +2,67 @@
 
 Servidor de express que usa typescript para desarrollar un api con Mongo DB
 
-## Comandos
+# Requisitos
 
-- Bajar dependencias
+Tener instalado **NodeJS** e idealmente tener **Docker Desktop (Recomendado)**.
 
-```bash
-yarn
-```
+En caso de no instalar DOCKER, seguir esta guia para usar [Mongo Atlas](https://youtu.be/d6wv1Utj5BE?si=PdiGLjGECGip2XnT).
 
-- Correr Desarrollo
+# Configuracion
 
-```bash
-yarn dev
-```
+1. Configurar el archivo **.env** copiando el de ejemplo. El archivo de ejemplo apunta de forma local.
+2. Instalar dependencias
 
-- Docker Desarrollo
+   ```bash
+   npm i        # Si usan npm (default)
+   yarn         # Si usan yarn
+   ```
+3. Importar las peticiones a su client
+    - [Thunder Client](https://www.thunderclient.com/)
+        - thunder-collection (...) .json para cargar las colecciones en thunder
+    - [Postman](https://www.postman.com/)
+        - postman-collection (...) .json para cargar las colecciones en postman
 
-```bash
-yarn db:up
-yarn db:down
-yarn db:destroy
-```
+# Comandos del proyecto
 
-- Correr Pruebas
+> Para correr comandos, en npm se usa `npm run <comando>` y en el caso de yarn se utiliza `yarn <comando>`
 
-```bash
-yarn test
-yarn coverage
-```
+- Correr server en modo desarrollo
 
-- Buildear Produccion
+  ```bash
+  yarn dev
+  npm run dev
+  ```
 
-```bash
-yarn build
-yarn serve
-```
+- Gestion contenedores de docker desktop
+
+  ```bash
+  yarn db:up            # Encender contenedores
+  npm run db:up         # Encender contenedores
+
+  yarn db:down          # Apagar contenedores
+  npm run db:down       # Apagar contenedores
+
+  yarn db:destroy       # Eliminar contenedores con datos incluidos
+  npm run db:destroy    # Eliminar contenedores con datos incluidos
+  ```
+
+- Realizar los testing del server
+
+  ```bash
+  yarn test         # Correr pruebas
+  npm run test      # Correr pruebas
+
+  yarn coverage     # Generar coverage de las pruebas
+  npm run coverage  # Generar coverage de las pruebas
+  ```
+
+- Construir build de produccion
+
+  ```bash
+  yarn build        # Transpilar de Typescript a Javascript
+  npm run build     # Transpilar de Typescript a Javascript
+
+  yarn serve        # Correr server en modo produccion
+  npm run serve     # Correr server en modo produccion
+  ```

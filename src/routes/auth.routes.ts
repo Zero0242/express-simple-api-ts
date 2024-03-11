@@ -6,7 +6,7 @@ import {
   registrarPost,
   updateAvatar,
 } from "../controllers";
-import { authGuard, fieldValidator } from "../middleware";
+import { authGuard, fieldValidator, fileValidator } from "../middleware";
 import { registerSchema } from "../schema";
 
 const router = Router();
@@ -19,6 +19,6 @@ router.post(
   registrarPost
 );
 
-router.post("/avatarset", [authGuard], updateAvatar);
+router.post("/avatarset", [authGuard, fileValidator], updateAvatar);
 
 export default router;

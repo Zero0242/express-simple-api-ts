@@ -4,6 +4,7 @@ interface IPost {
   titulo: string;
   descripcion: string;
   user: string;
+  galeria?: string[];
   privado?: boolean;
 }
 
@@ -11,6 +12,7 @@ interface PostDoc extends Document {
   titulo: string;
   descripcion: string;
   user: string;
+  galeria: string[];
   privado?: boolean;
 }
 
@@ -32,6 +34,11 @@ const postSchema: Schema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "usuario",
       required: true,
+    },
+    galeria: {
+      type: [String],
+      index: true,
+      default: [],
     },
     privado: {
       type: Boolean,

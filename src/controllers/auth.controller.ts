@@ -52,23 +52,15 @@ const registrarPost = async (req: Request, res: Response): AsyncResponse => {
 
 const updateAvatar = async (req: Request, res: Response): AsyncResponse => {
   try {
-    if (!req.files || !req.files.archivo) {
-      throw new Error("Archivo no seleccionado");
-    }
-
-    const file = req.files.archivo as fileUpload.UploadedFile;
+    const file = req.files!.archivo as fileUpload.UploadedFile;
     const extension: string = file.mimetype.split("/")[1];
-    const validExtensions = ["png", "jpg", "jpeg", "gif"];
-    if (!validExtensions.includes(extension)) {
-      throw new Error("Not valid file extension");
-    }
     // * Proceso subida de imagen
     //@ts-ignore
     const id: string = req.uid;
     //@ts-ignore
     const user: UsuarioDoc = req.user;
     const uploadsFolder = join(__dirname, "..", "..", "/public");
-    if (user.avatar!=="") {
+    if (user.avatar !== "") {
       const avatarPath = join(uploadsFolder, user.avatar);
       if (fs.existsSync(avatarPath)) {
         fs.unlinkSync(avatarPath);

@@ -1,7 +1,11 @@
 import { Request, Response } from "express";
+import fileUpload from "express-fileupload";
+import { join } from "path";
+import fs from "fs";
+import { v4 as uuid } from "uuid";
 import { Post, PostDoc } from "../models";
 import { AsyncResponse } from "../interfaces";
-import { errorResponse } from "../helpers";
+import { errorResponse, validatePost } from "../helpers";
 
 const getOnePost = async (req: Request, res: Response): AsyncResponse => {
   try {
@@ -50,8 +54,8 @@ const updatePost = async (req: Request, res: Response): AsyncResponse => {
     const { id } = req.params;
     const { descripcion, titulo, privado } = req.body;
 
-    const validSelection: boolean = await checkValidity(id, user);
-    if (!validSelection) throw new Error("Post no encontrado");
+    const { ok } = await validatePost(id, user);
+    if (!ok) throw new Error("Post no encontrado");
 
     const post: PostDoc | null = await Post.findByIdAndUpdate(
       id,
@@ -71,8 +75,8 @@ const deletePost = async (req: Request, res: Response): AsyncResponse => {
     //@ts-ignore
     const user: string = req.uid;
     const { id } = req.params;
-    const validSelection = await checkValidity(id, user);
-    if (!validSelection) throw new Error("Post no encontrado");
+    const { ok } = await validatePost(id, user);
+    if (!ok) throw new Error("Post no encontrado");
 
     const post: PostDoc | null = await Post.findByIdAndDelete(id, {
       new: true,
@@ -84,10 +88,41 @@ const deletePost = async (req: Request, res: Response): AsyncResponse => {
   }
 };
 
-const checkValidity = async (id: string, user: string): Promise<boolean> => {
-  const foundPost: PostDoc | null = await Post.findById(id);
-  const isFromUser: boolean = `${foundPost?.user}` === user;
-  return foundPost != null && isFromUser;
+const postAddPhotos = async (req: Request, res: Response): AsyncResponse => {
+  try {
+    //@ts-ignore
+    const user: string = req.uid;
+    const { id } = req.params;
+    const { ok, post } = await validatePost(id, user);
+    if (!ok) throw new Error("Post no encontrado");
+
+    const gallery = req.files!.images as fileUpload.UploadedFile[];
+    const uploadsFolder = join(__dirname, "..", "..", "/public");
+    let images: string[] = [];
+    for (const photo of gallery) {
+      const extension: string = photo.mimetype.split("/")[1];
+      const relativePath = `/uploads/posts/${uuid()}.${extension}`;
+      const uploadPath = join(uploadsFolder, relativePath);
+      await photo.mv(uploadPath);
+      images = [...images, uploadPath];
+    }
+
+    for (const photo of post!.galeria) {
+      if (photo !== "") {
+        const avatarPath = join(uploadsFolder, photo);
+        if (fs.existsSync(avatarPath)) {
+          fs.unlinkSync(avatarPath);
+        }
+      }
+    }
+
+    post!.galeria = images;
+    await post?.save();
+
+    return res.json({ ok: true, post });
+  } catch (e) {
+    return errorResponse({ res, message: (e as Error).message });
+  }
 };
 
 export {
@@ -97,4 +132,5 @@ export {
   updatePost,
   deletePost,
   getUserPost,
+  postAddPhotos,
 };

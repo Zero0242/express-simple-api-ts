@@ -8,6 +8,12 @@ Tener instalado **NodeJS** e idealmente tener **Docker Desktop (Recomendado)**.
 
 En caso de no instalar DOCKER, seguir esta guia para usar [Mongo Atlas](https://youtu.be/d6wv1Utj5BE?si=PdiGLjGECGip2XnT).
 
+Tener instalado **yarn**
+
+```bash
+npm install -g yarn
+```
+
 # Configuracion
 
 1. Configurar el archivo **.env** copiando el de ejemplo. El archivo de ejemplo apunta de forma local.
@@ -17,11 +23,12 @@ En caso de no instalar DOCKER, seguir esta guia para usar [Mongo Atlas](https://
    npm i        # Si usan npm (default)
    yarn         # Si usan yarn
    ```
+
 3. Importar las peticiones a su client
-    - [Thunder Client](https://www.thunderclient.com/)
-        - thunder-collection (...) .json para cargar las colecciones en thunder
-    - [Postman](https://www.postman.com/)
-        - postman-collection (...) .json para cargar las colecciones en postman
+   - [Thunder Client](https://www.thunderclient.com/)
+     - thunder-collection (...) .json para cargar las colecciones en thunder
+   - [Postman](https://www.postman.com/)
+     - postman-collection (...) .json para cargar las colecciones en postman
 
 # Comandos del proyecto
 

@@ -5,7 +5,7 @@ import fs from "fs";
 import { v4 as uuid } from "uuid";
 import { Post, PostDoc } from "../models";
 import { AsyncResponse } from "../interfaces";
-import { errorResponse, validatePost } from "../helpers";
+import { errorResponse, validatePost, parseInt } from "../helpers";
 
 const getOnePost = async (req: Request, res: Response): AsyncResponse => {
   try {
@@ -19,7 +19,13 @@ const getOnePost = async (req: Request, res: Response): AsyncResponse => {
 };
 
 const getAllPost = async (req: Request, res: Response): AsyncResponse => {
-  const posts: PostDoc[] = await Post.find({ privado: false });
+  const limit = parseInt(req.query.limit) ?? 10;
+  const offset = parseInt(req.query.offset) ?? 0;
+
+  const posts: PostDoc[] = await Post.find({ privado: false }, undefined, {
+    limit: limit,
+    skip: offset,
+  });
   return res.json({ ok: true, posts });
 };
 

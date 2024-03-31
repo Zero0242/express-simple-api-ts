@@ -22,7 +22,7 @@ app.use(
     useTempFiles: true,
     tempFileDir: "/tmp/",
     createParentPath: true,
-    debug: true,
+    debug: false,
   })
 );
 

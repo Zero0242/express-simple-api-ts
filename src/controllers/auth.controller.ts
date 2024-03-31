@@ -1,12 +1,9 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
 import fileUpload from "express-fileupload";
-import { join } from "path";
-import fs from "fs";
-import { v4 as uuid } from "uuid";
 import { Usuario, UsuarioDoc } from "../models";
 import { AsyncResponse } from "../interfaces";
-import { errorResponse, signJWT } from "../helpers/";
+import { errorResponse, signJWT, uploadFile } from "../helpers";
 
 const loginGet = async (req: Request, res: Response): AsyncResponse => {
   try {
@@ -53,25 +50,13 @@ const registrarPost = async (req: Request, res: Response): AsyncResponse => {
 const updateAvatar = async (req: Request, res: Response): AsyncResponse => {
   try {
     const file = req.files!.archivo as fileUpload.UploadedFile;
-    const extension: string = file.mimetype.split("/")[1];
     // * Proceso subida de imagen
     //@ts-ignore
     const id: string = req.uid;
     //@ts-ignore
     const user: UsuarioDoc = req.user;
-    const uploadsFolder = join(__dirname, "..", "..", "/public");
-    if (user.avatar !== "") {
-      const avatarPath = join(uploadsFolder, user.avatar);
-      if (fs.existsSync(avatarPath)) {
-        fs.unlinkSync(avatarPath);
-      }
-    }
 
-    const relativePath = `/uploads/users/${uuid()}.${extension}`;
-
-    const uploadPath = join(uploadsFolder, relativePath);
-
-    await file.mv(uploadPath);
+    const relativePath = await uploadFile("posts", file, user.avatar);
     const usuario = await Usuario.findByIdAndUpdate(
       id,
       { avatar: relativePath },

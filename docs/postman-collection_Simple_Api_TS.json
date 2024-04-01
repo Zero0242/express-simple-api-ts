@@ -1,6 +1,6 @@
 {
     "info": {
-        "_postman_id": "db40ad3a-b545-41fa-b522-3ae162e38668",
+        "_postman_id": "dad65c69-7363-4e11-9c21-75075c107997",
         "name": "Simple Api TS",
         "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
         "description": ""
@@ -14,15 +14,14 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "localhost:3000/auth/login",
+                            "raw": "{{baseURL}}/auth/login",
                             "path": [
                                 "auth",
                                 "login"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "auth": {
                             "type": "bearer",
@@ -41,15 +40,14 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "localhost:3000/auth/login",
+                            "raw": "{{baseURL}}/auth/login",
                             "path": [
                                 "auth",
                                 "login"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "body": {
                             "mode": "raw",
@@ -77,15 +75,14 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "localhost:3000/auth/register",
+                            "raw": "{{baseURL}}/auth/register",
                             "path": [
                                 "auth",
                                 "register"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "body": {
                             "mode": "raw",
@@ -103,22 +100,21 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "localhost:3000/auth/avatarset",
+                            "raw": "{{baseURL}}/auth/avatarset",
                             "path": [
                                 "auth",
                                 "avatarset"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "body": {
                             "mode": "formdata",
                             "formdata": [
                                 {
                                     "key": "archivo",
-                                    "src": "/home/pedro/Imágenes/fumo-bunny.jpg",
+                                    "src": "/Users/pedro/Downloads/nature-image.png",
                                     "type": "file"
                                 }
                             ]
@@ -128,7 +124,7 @@
                             "bearer": [
                                 {
                                     "key": "token",
-                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjVlYTlmNDhjM2QxOTAyYjgyMDQ1NjQwIn0sImlhdCI6MTcwOTg3NTAxNywiZXhwIjoxNzA5ODc4NjE3fQ.LL4QeFTWiJDAfFqV-F8awAKVVM0GpvFXM_mHWYBSOxs",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkxNjk3MSwiZXhwIjoxNzExOTIwNTcxfQ.XM_KBl5BKpW30sUhGDH9oTZJd9K8z1WFBYagB8XyOuQ",
                                     "type": "string"
                                 }
                             ]
@@ -145,16 +141,15 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "localhost:3000/api/post/659625ee536066fb9f67592d",
+                            "raw": "{{baseURL}}/api/post/659625ee536066fb9f67592d",
                             "path": [
                                 "api",
                                 "post",
                                 "659625ee536066fb9f67592d"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         }
                     }
                 },
@@ -163,15 +158,25 @@
                     "request": {
                         "method": "GET",
                         "url": {
-                            "raw": "localhost:3000/api/post/",
+                            "raw": "{{baseURL}}/api/post?limit=20&offset=0",
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "20"
+                                },
+                                {
+                                    "key": "offset",
+                                    "value": "0"
+                                }
+                            ],
+                            "variable": [],
                             "path": [
                                 "api",
                                 "post"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         }
                     }
                 },
@@ -180,15 +185,14 @@
                     "request": {
                         "method": "POST",
                         "url": {
-                            "raw": "localhost:3000/api/post/",
+                            "raw": "{{baseURL}}/api/post/",
                             "path": [
                                 "api",
                                 "post"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "body": {
                             "mode": "raw",
@@ -197,14 +201,14 @@
                                     "language": "json"
                                 }
                             },
-                            "raw": "{\n  \"titulo\":\"Nuevo Post\",\n  \"descripcion\":\"Este es mi nuevo Post\"\n}"
+                            "raw": "{\n  \"titulo\":\"Nuevo Post 11\",\n  \"descripcion\":\"Este es mi nuevo Post\"\n}"
                         },
                         "auth": {
                             "type": "bearer",
                             "bearer": [
                                 {
                                     "key": "token",
-                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwiaWF0IjoxNzA0MzM4MDg5LCJleHAiOjE3MDQzNDE2ODl9.Q_B1eQFqTyQUhm760Upu64T1cZ8UOuRsR1bXRw77nXo",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4",
                                     "type": "string"
                                 }
                             ]
@@ -216,16 +220,15 @@
                     "request": {
                         "method": "PUT",
                         "url": {
-                            "raw": "localhost:3000/api/post/659625df536066fb9f675921",
+                            "raw": "{{baseURL}}/api/post/659625df536066fb9f675921",
                             "path": [
                                 "api",
                                 "post",
                                 "659625df536066fb9f675921"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "body": {
                             "mode": "raw",
@@ -253,23 +256,60 @@
                     "request": {
                         "method": "DELETE",
                         "url": {
-                            "raw": "localhost:3000/api/post/659625ee536066fb9f67592d",
+                            "raw": "{{baseURL}}/api/post/660a1d19741ec98ab9e2d790",
                             "path": [
                                 "api",
                                 "post",
-                                "659625ee536066fb9f67592d"
+                                "660a1d19741ec98ab9e2d790"
                             ],
                             "host": [
-                                "localhost"
-                            ],
-                            "port": "3000"
+                                "{{baseurl}}"
+                            ]
                         },
                         "auth": {
                             "type": "bearer",
                             "bearer": [
                                 {
                                     "key": "token",
-                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwiaWF0IjoxNzA0MzM4MDg5LCJleHAiOjE3MDQzNDE2ODl9.Q_B1eQFqTyQUhm760Upu64T1cZ8UOuRsR1bXRw77nXo",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkzNTYyOCwiZXhwIjoxNzExOTM5MjI4fQ.mMAcOQVLAWGlYP7KHQbA9LwDSPiFRj0IOdEdtAKdvB8",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Upload Post Photo",
+                    "request": {
+                        "method": "POST",
+                        "url": {
+                            "raw": "{{baseURL}}/api/post/upload/660a1f05f01bbc5016cf9436",
+                            "path": [
+                                "api",
+                                "post",
+                                "upload",
+                                "660a1f05f01bbc5016cf9436"
+                            ],
+                            "host": [
+                                "{{baseurl}}"
+                            ]
+                        },
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "archivo",
+                                    "src": "/Users/pedro/Downloads/assets de preuba/axolotl.png",
+                                    "type": "file"
+                                }
+                            ]
+                        },
+                        "auth": {
+                            "type": "bearer",
+                            "bearer": [
+                                {
+                                    "key": "token",
+                                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4",
                                     "type": "string"
                                 }
                             ]

@@ -1,42 +1,42 @@
 {
     "client": "Thunder Client",
     "collectionName": "Simple Api TS",
-    "dateExported": "2024-03-08T05:38:14.803Z",
+    "dateExported": "2024-04-01T20:56:28.395Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "f7569203-5e38-4624-b356-fa72b7a6f715",
+            "_id": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
             "name": "Auth",
             "containerId": "",
-            "created": "2024-01-04T03:04:50.417Z",
+            "created": "2024-03-08T12:54:24.966Z",
             "sortNum": 10000
         },
         {
-            "_id": "1a88ac8e-0422-4c17-9fdf-1df961455b7d",
+            "_id": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
             "name": "Posts",
             "containerId": "",
-            "created": "2024-01-04T03:15:47.748Z",
+            "created": "2024-03-08T12:54:24.967Z",
             "sortNum": 20000
         },
         {
-            "_id": "c936806c-1091-4bba-aa4c-50511849082a",
+            "_id": "27f26bf5-22d4-4b8b-88e9-8b581c55e33a",
             "name": "test",
             "containerId": "",
-            "created": "2024-01-15T21:53:50.600Z",
+            "created": "2024-03-08T12:54:24.968Z",
             "sortNum": 30000
         }
     ],
     "requests": [
         {
-            "_id": "2bb36a9f-fe3b-4784-893c-92cff2584c99",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "f7569203-5e38-4624-b356-fa72b7a6f715",
+            "_id": "89db4380-2cd8-4983-8220-478bbe89e35b",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
             "name": "GET Login",
-            "url": "localhost:3000/auth/login",
+            "url": "{{baseURL}}/auth/login",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-01-04T03:04:35.762Z",
-            "modified": "2024-01-04T05:54:30.299Z",
+            "created": "2024-03-08T12:54:24.967Z",
+            "modified": "2024-03-31T16:00:47.491Z",
             "headers": [],
             "params": [],
             "auth": {
@@ -46,15 +46,15 @@
             "tests": []
         },
         {
-            "_id": "aa2e6bc8-5699-4e1e-b78b-2435df2dcc45",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "f7569203-5e38-4624-b356-fa72b7a6f715",
+            "_id": "e5ccf738-989d-449d-81c7-7f12b1b2d41d",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
             "name": "POST Login",
-            "url": "localhost:3000/auth/login",
+            "url": "{{baseURL}}/auth/login",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-01-04T03:05:01.359Z",
-            "modified": "2024-01-04T05:43:56.052Z",
+            "created": "2024-03-08T12:54:24.968Z",
+            "modified": "2024-03-31T16:01:24.520Z",
             "headers": [],
             "params": [],
             "body": {
@@ -69,15 +69,15 @@
             "tests": []
         },
         {
-            "_id": "5d786203-720b-4ca4-a066-1923c1089ae9",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "f7569203-5e38-4624-b356-fa72b7a6f715",
+            "_id": "4acb3f64-08f4-4203-82cb-4888de9023a1",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
             "name": "Register",
-            "url": "localhost:3000/auth/register",
+            "url": "{{baseURL}}/auth/register",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2024-01-04T03:05:28.550Z",
-            "modified": "2024-01-04T03:11:58.019Z",
+            "created": "2024-03-08T12:54:24.969Z",
+            "modified": "2024-03-31T16:01:34.373Z",
             "headers": [],
             "params": [],
             "body": {
@@ -88,66 +88,113 @@
             "tests": []
         },
         {
-            "_id": "ed3c16f9-2154-4479-a138-f59c20ce7fca",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "1a88ac8e-0422-4c17-9fdf-1df961455b7d",
+            "_id": "9890b38b-aede-4e03-bbd9-c31620c3e088",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
             "name": "Get one Post",
-            "url": "localhost:3000/api/post/659625ee536066fb9f67592d",
+            "url": "{{baseURL}}/api/post/659625ee536066fb9f67592d",
             "method": "GET",
             "sortNum": 40000,
-            "created": "2024-01-04T03:16:00.435Z",
-            "modified": "2024-01-04T03:59:17.209Z",
+            "created": "2024-03-08T12:54:24.970Z",
+            "modified": "2024-03-31T16:38:53.772Z",
             "headers": [],
             "params": [],
-            "tests": []
+            "tests": [
+                {
+                    "type": "res-body",
+                    "custom": "",
+                    "action": "contains",
+                    "value": "ok"
+                }
+            ]
         },
         {
-            "_id": "7f32c91b-de60-4d1d-a03e-0d4d526f5ba8",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "1a88ac8e-0422-4c17-9fdf-1df961455b7d",
+            "_id": "e34b153f-f0a7-43b9-a323-b8181ca2a931",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
             "name": "Get all Posts",
-            "url": "localhost:3000/api/post/",
+            "url": "{{baseURL}}/api/post?limit=20&offset=0",
             "method": "GET",
             "sortNum": 50000,
-            "created": "2024-01-04T03:16:20.291Z",
-            "modified": "2024-01-04T03:17:19.858Z",
+            "created": "2024-03-08T12:54:24.971Z",
+            "modified": "2024-04-01T02:37:02.669Z",
             "headers": [],
-            "params": [],
+            "params": [
+                {
+                    "name": "limit",
+                    "value": "20",
+                    "isPath": false
+                },
+                {
+                    "name": "offset",
+                    "value": "0",
+                    "isPath": false
+                }
+            ],
             "tests": []
         },
         {
-            "_id": "92db4b4a-5e41-4037-b656-4e8a9ff4fc52",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "1a88ac8e-0422-4c17-9fdf-1df961455b7d",
+            "_id": "e26dfa7e-9d59-4aa9-aa16-86903306f422",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
             "name": "Create Post",
-            "url": "localhost:3000/api/post/",
+            "url": "{{baseURL}}/api/post/",
             "method": "POST",
             "sortNum": 60000,
-            "created": "2024-01-04T03:16:28.811Z",
-            "modified": "2024-01-04T03:20:44.431Z",
+            "created": "2024-03-08T12:54:24.972Z",
+            "modified": "2024-04-01T02:42:08.265Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"titulo\":\"Nuevo Post\",\n  \"descripcion\":\"Este es mi nuevo Post\"\n}",
+                "raw": "{\n  \"titulo\":\"Nuevo Post 11\",\n  \"descripcion\":\"Este es mi nuevo Post\"\n}",
                 "form": []
             },
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwiaWF0IjoxNzA0MzM4MDg5LCJleHAiOjE3MDQzNDE2ODl9.Q_B1eQFqTyQUhm760Upu64T1cZ8UOuRsR1bXRw77nXo"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4"
             },
             "tests": []
         },
         {
-            "_id": "6e6ee9cd-4f46-4266-929f-f31564d94431",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "1a88ac8e-0422-4c17-9fdf-1df961455b7d",
+            "_id": "d481b416-99d0-4857-9db9-497260df0d15",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
+            "name": "Upload Post Photo",
+            "url": "{{baseURL}}/api/post/upload/660a1f05f01bbc5016cf9436",
+            "method": "POST",
+            "sortNum": 65000,
+            "created": "2024-03-31T20:10:48.033Z",
+            "modified": "2024-04-01T02:42:48.585Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formdata",
+                "raw": "",
+                "form": [],
+                "files": [
+                    {
+                        "name": "archivo",
+                        "value": "/Users/pedro/Downloads/assets de preuba/axolotl.png"
+                    }
+                ]
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4"
+            },
+            "tests": []
+        },
+        {
+            "_id": "272bad33-b5a5-4277-920c-85e6accff990",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
             "name": "Update Post",
-            "url": "localhost:3000/api/post/659625df536066fb9f675921",
+            "url": "{{baseURL}}/api/post/659625df536066fb9f675921",
             "method": "PUT",
             "sortNum": 70000,
-            "created": "2024-01-04T03:16:36.917Z",
-            "modified": "2024-01-04T04:04:33.805Z",
+            "created": "2024-03-08T12:54:24.973Z",
+            "modified": "2024-03-31T16:38:14.524Z",
             "headers": [],
             "params": [],
             "body": {
@@ -162,33 +209,33 @@
             "tests": []
         },
         {
-            "_id": "fa5c117c-cec2-4705-abb0-4cdc1b818297",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "1a88ac8e-0422-4c17-9fdf-1df961455b7d",
+            "_id": "f3b2ca5c-a8c3-4d6d-a02c-aaa61542a6c2",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
             "name": "Delete Post",
-            "url": "localhost:3000/api/post/659625ee536066fb9f67592d",
+            "url": "{{baseURL}}/api/post/660a1d19741ec98ab9e2d790",
             "method": "DELETE",
             "sortNum": 70000,
-            "created": "2024-01-04T03:16:50.683Z",
-            "modified": "2024-01-04T03:47:00.051Z",
+            "created": "2024-03-08T12:54:24.974Z",
+            "modified": "2024-04-01T02:35:18.965Z",
             "headers": [],
             "params": [],
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwiaWF0IjoxNzA0MzM4MDg5LCJleHAiOjE3MDQzNDE2ODl9.Q_B1eQFqTyQUhm760Upu64T1cZ8UOuRsR1bXRw77nXo"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkzNTYyOCwiZXhwIjoxNzExOTM5MjI4fQ.mMAcOQVLAWGlYP7KHQbA9LwDSPiFRj0IOdEdtAKdvB8"
             },
             "tests": []
         },
         {
-            "_id": "59f8891b-a619-4ca0-bd81-647051d2054a",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "c936806c-1091-4bba-aa4c-50511849082a",
+            "_id": "daa1d740-7ee8-4c2b-93e2-b651a8c6e939",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "27f26bf5-22d4-4b8b-88e9-8b581c55e33a",
             "name": "upload test",
             "url": "localhost:3000/demo/upload",
             "method": "POST",
             "sortNum": 80000,
-            "created": "2024-01-15T21:53:57.180Z",
-            "modified": "2024-03-08T04:33:50.556Z",
+            "created": "2024-03-08T12:54:24.975Z",
+            "modified": "2024-03-08T12:54:24.975Z",
             "headers": [],
             "params": [],
             "body": {
@@ -202,19 +249,18 @@
                     }
                 ]
             },
-            "reqType": "post",
             "tests": []
         },
         {
-            "_id": "c5de3017-2827-4388-94aa-314d5244b010",
-            "colId": "2d265dbd-8add-402c-957c-0cac2c6aa170",
-            "containerId": "f7569203-5e38-4624-b356-fa72b7a6f715",
+            "_id": "7a207d4b-0a4e-4c3b-bf2c-30ab9126554c",
+            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
+            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
             "name": "Actualizar Avatar",
-            "url": "localhost:3000/auth/avatarset",
+            "url": "{{baseURL}}/auth/avatarset",
             "method": "POST",
             "sortNum": 90000,
-            "created": "2024-03-08T04:53:28.992Z",
-            "modified": "2024-03-08T05:18:51.439Z",
+            "created": "2024-03-08T12:54:24.976Z",
+            "modified": "2024-03-31T20:29:48.404Z",
             "headers": [],
             "params": [],
             "body": {
@@ -224,14 +270,13 @@
                 "files": [
                     {
                         "name": "archivo",
-                        "value": "/home/pedro/Imágenes/fumo-bunny.jpg"
+                        "value": "/Users/pedro/Downloads/nature-image.png"
                     }
                 ]
             },
-            "reqType": "post",
             "auth": {
                 "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjVlYTlmNDhjM2QxOTAyYjgyMDQ1NjQwIn0sImlhdCI6MTcwOTg3NTAxNywiZXhwIjoxNzA5ODc4NjE3fQ.LL4QeFTWiJDAfFqV-F8awAKVVM0GpvFXM_mHWYBSOxs"
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkxNjk3MSwiZXhwIjoxNzExOTIwNTcxfQ.XM_KBl5BKpW30sUhGDH9oTZJd9K8z1WFBYagB8XyOuQ"
             },
             "tests": []
         }

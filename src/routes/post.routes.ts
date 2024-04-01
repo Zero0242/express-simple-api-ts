@@ -5,6 +5,7 @@ import {
   getAllPost,
   getOnePost,
   makePost,
+  postAddPhotos,
   updatePost,
 } from "../controllers";
 import { authGuard, fieldValidator } from "../middleware";
@@ -19,6 +20,7 @@ router.post(
   [authGuard, checkSchema(createPostSchema) as any, fieldValidator],
   makePost
 );
+router.post("/upload/:id", [authGuard], postAddPhotos);
 router.put(
   "/:id",
   [

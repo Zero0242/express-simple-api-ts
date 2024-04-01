@@ -1,10 +1,11 @@
 import { Model, Document, Schema, model } from "mongoose";
+import { Image, imageSchema } from "./image.model";
 
 interface IPost {
   titulo: string;
   descripcion: string;
   user: string;
-  galeria?: string[];
+  galeria?: Image[];
   privado?: boolean;
 }
 
@@ -12,7 +13,7 @@ interface PostDoc extends Document {
   titulo: string;
   descripcion: string;
   user: string;
-  galeria: string[];
+  galeria: Image[];
   privado?: boolean;
 }
 
@@ -36,7 +37,7 @@ const postSchema: Schema = new Schema(
       required: true,
     },
     galeria: {
-      type: [String],
+      type: [imageSchema],
       index: true,
       default: [],
     },

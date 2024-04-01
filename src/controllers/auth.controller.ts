@@ -56,7 +56,7 @@ const updateAvatar = async (req: Request, res: Response): AsyncResponse => {
     //@ts-ignore
     const user: UsuarioDoc = req.user;
 
-    const relativePath = await uploadFile("posts", file, user.avatar);
+    const relativePath = await uploadFile("users", file, user.avatar);
     const usuario = await Usuario.findByIdAndUpdate(
       id,
       { avatar: relativePath },

@@ -12,12 +12,7 @@ export const uploadFile = async (
 ): Promise<string> => {
   const extension: string = file.mimetype.split("/")[1];
   const uploadsFolder = join(__dirname, "..", "..", "/public");
-  if (previousUpload !== "") {
-    const avatarPath = join(uploadsFolder, previousUpload);
-    if (fs.existsSync(avatarPath)) {
-      fs.unlinkSync(avatarPath);
-    }
-  }
+  if (previousUpload !== "") removeImage(previousUpload);
 
   const relativePath = `/uploads/${collection}/${uuid()}.${extension}`;
 
@@ -25,4 +20,12 @@ export const uploadFile = async (
 
   await file.mv(uploadPath);
   return relativePath;
+};
+
+export const removeImage = (path: string) => {
+  const uploadsFolder = join(__dirname, "..", "..", "/public");
+  const avatarPath = join(uploadsFolder, path);
+  if (fs.existsSync(avatarPath)) {
+    fs.unlinkSync(avatarPath);
+  }
 };

@@ -1,11 +1,14 @@
 import { Request, Response } from "express";
 import fileUpload from "express-fileupload";
-import { join } from "path";
-import fs from "fs";
-import { v4 as uuid } from "uuid";
 import { Post, PostDoc } from "../models";
 import { AsyncResponse } from "../interfaces";
-import { errorResponse, validatePost, parseInt } from "../helpers";
+import {
+  errorResponse,
+  validatePost,
+  parseInt,
+  uploadFile,
+  removeImage,
+} from "../helpers";
 
 const getOnePost = async (req: Request, res: Response): AsyncResponse => {
   try {
@@ -88,6 +91,9 @@ const deletePost = async (req: Request, res: Response): AsyncResponse => {
       new: true,
     });
     if (!post) throw new Error("Error al eliminar post");
+    for (const { path } of post.galeria) {
+      removeImage(path);
+    }
     return res.json({ ok: true, post });
   } catch (e) {
     return errorResponse({ res, message: (e as Error).message });
@@ -99,31 +105,26 @@ const postAddPhotos = async (req: Request, res: Response): AsyncResponse => {
     //@ts-ignore
     const user: string = req.uid;
     const { id } = req.params;
+    const { imageID } = req.body;
     const { ok, post } = await validatePost(id, user);
     if (!ok) throw new Error("Post no encontrado");
+    console.log({
+      imageID,
+      photos: post?.galeria,
+      //@ts-ignore
+      canUpdate: post?.galeria.map(({ id }) => id).includes(imageID),
+    });
 
-    const gallery = req.files!.images as fileUpload.UploadedFile[];
-    const uploadsFolder = join(__dirname, "..", "..", "/public");
-    let images: string[] = [];
-    for (const photo of gallery) {
-      const extension: string = photo.mimetype.split("/")[1];
-      const relativePath = `/uploads/posts/${uuid()}.${extension}`;
-      const uploadPath = join(uploadsFolder, relativePath);
-      await photo.mv(uploadPath);
-      images = [...images, uploadPath];
+    const file = req.files!.archivo as fileUpload.UploadedFile;
+    const { galeria } = post!;
+
+    if (galeria.length > 5) {
+      throw new Error("Ha superado el limite de imagenes");
     }
+    const path = await uploadFile("posts", file, "");
+    post!.galeria = [...galeria, { path }];
 
-    for (const photo of post!.galeria) {
-      if (photo !== "") {
-        const avatarPath = join(uploadsFolder, photo);
-        if (fs.existsSync(avatarPath)) {
-          fs.unlinkSync(avatarPath);
-        }
-      }
-    }
-
-    post!.galeria = images;
-    await post?.save();
+    await post!.save();
 
     return res.json({ ok: true, post });
   } catch (e) {

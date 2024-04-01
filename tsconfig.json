@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": false
   },
   "exclude": ["node_modules", "tests"]
 }

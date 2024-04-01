@@ -105,21 +105,13 @@ const postAddPhotos = async (req: Request, res: Response): AsyncResponse => {
     //@ts-ignore
     const user: string = req.uid;
     const { id } = req.params;
-    const { imageID } = req.body;
     const { ok, post } = await validatePost(id, user);
     if (!ok) throw new Error("Post no encontrado");
-    console.log({
-      imageID,
-      photos: post?.galeria,
-      //@ts-ignore
-      canUpdate: post?.galeria.map(({ id }) => id).includes(imageID),
-    });
-
     const file = req.files!.archivo as fileUpload.UploadedFile;
     const { galeria } = post!;
 
     if (galeria.length > 5) {
-      throw new Error("Ha superado el limite de imagenes");
+      throw new Error(`Ha superado el limite de imagenes`);
     }
     const path = await uploadFile("posts", file, "");
     post!.galeria = [...galeria, { path }];

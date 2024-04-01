@@ -3,9 +3,9 @@ import morgan from "morgan";
 import cors from "cors";
 import helmet from "helmet";
 import fileUpload from "express-fileupload";
-//import { v2 as cloudinary } from "cloudinary";
-import { AuthRoutes, PostRoutes, ShopRoutes } from "./routes";
+import { AuthRoutes, PostRoutes, ShopRoutes, UserRoutes } from "./routes";
 
+//import { v2 as cloudinary } from "cloudinary";
 //cloudinary.config("xxxxx");
 
 const app = express();
@@ -35,5 +35,6 @@ app.use(cors({ origin: "*" }));
 app.use("/auth", AuthRoutes);
 app.use("/api/post", PostRoutes);
 app.use("/api/shop", ShopRoutes);
+app.use("/api/users", UserRoutes);
 
 export default app;

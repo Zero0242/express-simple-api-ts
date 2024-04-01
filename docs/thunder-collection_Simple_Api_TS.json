@@ -1,283 +1,241 @@
 {
     "client": "Thunder Client",
     "collectionName": "Simple Api TS",
-    "dateExported": "2024-04-01T20:56:28.395Z",
+    "dateExported": "2024-04-01T21:27:29.112Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
+            "_id": "e69ad219-e7ca-4174-bacf-92b47f84f531",
             "name": "Auth",
             "containerId": "",
-            "created": "2024-03-08T12:54:24.966Z",
+            "created": "2024-04-01T21:11:32.161Z",
             "sortNum": 10000
         },
         {
-            "_id": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
+            "_id": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
             "name": "Posts",
             "containerId": "",
-            "created": "2024-03-08T12:54:24.967Z",
+            "created": "2024-04-01T21:11:32.162Z",
             "sortNum": 20000
         },
         {
-            "_id": "27f26bf5-22d4-4b8b-88e9-8b581c55e33a",
-            "name": "test",
+            "_id": "88479c39-48c7-4769-923b-69d705b5df51",
+            "name": "Users",
             "containerId": "",
-            "created": "2024-03-08T12:54:24.968Z",
-            "sortNum": 30000
+            "created": "2024-04-01T21:12:36.204Z",
+            "sortNum": 40000
         }
     ],
     "requests": [
         {
-            "_id": "89db4380-2cd8-4983-8220-478bbe89e35b",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
+            "_id": "c676f7f5-e035-4d4d-aaa9-f051fb6035a2",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "e69ad219-e7ca-4174-bacf-92b47f84f531",
             "name": "GET Login",
             "url": "{{baseURL}}/auth/login",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-03-08T12:54:24.967Z",
-            "modified": "2024-03-31T16:00:47.491Z",
+            "created": "2024-04-01T21:11:32.161Z",
+            "modified": "2024-04-01T21:11:32.161Z",
             "headers": [],
-            "params": [],
             "auth": {
                 "type": "bearer",
                 "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjU5NjQ3ZmEyMjNkMWVlN2UwZTFjOTJkIiwicm9sIjoiQURNSU4ifSwiaWF0IjoxNzA0MzQ3NjYwLCJleHAiOjE3MDQzNTEyNjB9.e2bI_NIkKQ8cxjlWA9vRfgUm9snKc5tsLDmH9Lv3kd4"
-            },
-            "tests": []
+            }
         },
         {
-            "_id": "e5ccf738-989d-449d-81c7-7f12b1b2d41d",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
+            "_id": "95e1fb12-b6c2-4bc3-85f2-0ac4d4ec0e10",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "e69ad219-e7ca-4174-bacf-92b47f84f531",
             "name": "POST Login",
             "url": "{{baseURL}}/auth/login",
             "method": "POST",
             "sortNum": 20000,
-            "created": "2024-03-08T12:54:24.968Z",
-            "modified": "2024-03-31T16:01:24.520Z",
+            "created": "2024-04-01T21:11:32.162Z",
+            "modified": "2024-04-01T21:11:32.162Z",
             "headers": [],
-            "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"password\":\"1234\",\n  \"email\":\"test1@test.cl\"\n}",
-                "form": []
+                "raw": "{\n  \"password\":\"1234\",\n  \"email\":\"test1@test.cl\"\n}"
             },
             "auth": {
                 "type": "bearer",
                 "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwicm9sIjoiVVNFUiJ9LCJpYXQiOjE3MDQzNDQ3NTYsImV4cCI6MTcwNDM0ODM1Nn0.T5c5IizW4ZVfP6F3T1aBWyMFFISt8h0xNGFXrG0u3wU"
-            },
-            "tests": []
+            }
         },
         {
-            "_id": "4acb3f64-08f4-4203-82cb-4888de9023a1",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
+            "_id": "16cefded-389e-48d5-880e-d478fb2965a2",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "e69ad219-e7ca-4174-bacf-92b47f84f531",
             "name": "Register",
             "url": "{{baseURL}}/auth/register",
             "method": "POST",
             "sortNum": 30000,
-            "created": "2024-03-08T12:54:24.969Z",
-            "modified": "2024-03-31T16:01:34.373Z",
+            "created": "2024-04-01T21:11:32.163Z",
+            "modified": "2024-04-01T21:19:50.366Z",
             "headers": [],
             "params": [],
             "body": {
                 "type": "json",
-                "raw": "{\n  \"nombre\":\"test1\",\n  \"password\":\"1234\",\n  \"email\":\"test1@test.cl\"\n}",
+                "raw": "{\n  \"nombre\":\"test1\",\n  \"password\":\"1234\",\n  \"email\":\"test3@test.cl\"\n}",
                 "form": []
             },
             "tests": []
         },
         {
-            "_id": "9890b38b-aede-4e03-bbd9-c31620c3e088",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
-            "name": "Get one Post",
-            "url": "{{baseURL}}/api/post/659625ee536066fb9f67592d",
-            "method": "GET",
-            "sortNum": 40000,
-            "created": "2024-03-08T12:54:24.970Z",
-            "modified": "2024-03-31T16:38:53.772Z",
-            "headers": [],
-            "params": [],
-            "tests": [
-                {
-                    "type": "res-body",
-                    "custom": "",
-                    "action": "contains",
-                    "value": "ok"
-                }
-            ]
-        },
-        {
-            "_id": "e34b153f-f0a7-43b9-a323-b8181ca2a931",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
-            "name": "Get all Posts",
-            "url": "{{baseURL}}/api/post?limit=20&offset=0",
-            "method": "GET",
-            "sortNum": 50000,
-            "created": "2024-03-08T12:54:24.971Z",
-            "modified": "2024-04-01T02:37:02.669Z",
-            "headers": [],
-            "params": [
-                {
-                    "name": "limit",
-                    "value": "20",
-                    "isPath": false
-                },
-                {
-                    "name": "offset",
-                    "value": "0",
-                    "isPath": false
-                }
-            ],
-            "tests": []
-        },
-        {
-            "_id": "e26dfa7e-9d59-4aa9-aa16-86903306f422",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
-            "name": "Create Post",
-            "url": "{{baseURL}}/api/post/",
-            "method": "POST",
-            "sortNum": 60000,
-            "created": "2024-03-08T12:54:24.972Z",
-            "modified": "2024-04-01T02:42:08.265Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"titulo\":\"Nuevo Post 11\",\n  \"descripcion\":\"Este es mi nuevo Post\"\n}",
-                "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4"
-            },
-            "tests": []
-        },
-        {
-            "_id": "d481b416-99d0-4857-9db9-497260df0d15",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
-            "name": "Upload Post Photo",
-            "url": "{{baseURL}}/api/post/upload/660a1f05f01bbc5016cf9436",
-            "method": "POST",
-            "sortNum": 65000,
-            "created": "2024-03-31T20:10:48.033Z",
-            "modified": "2024-04-01T02:42:48.585Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [],
-                "files": [
-                    {
-                        "name": "archivo",
-                        "value": "/Users/pedro/Downloads/assets de preuba/axolotl.png"
-                    }
-                ]
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4"
-            },
-            "tests": []
-        },
-        {
-            "_id": "272bad33-b5a5-4277-920c-85e6accff990",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
-            "name": "Update Post",
-            "url": "{{baseURL}}/api/post/659625df536066fb9f675921",
-            "method": "PUT",
-            "sortNum": 70000,
-            "created": "2024-03-08T12:54:24.973Z",
-            "modified": "2024-03-31T16:38:14.524Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "json",
-                "raw": "{\n  \"titulo\":\"Post Actualizado 1000\",\n  \"descripcion\":\"3 asdf\",\n  \"privado\":\"false\"\n}",
-                "form": []
-            },
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwiaWF0IjoxNzA0MzM4MDg5LCJleHAiOjE3MDQzNDE2ODl9.Q_B1eQFqTyQUhm760Upu64T1cZ8UOuRsR1bXRw77nXo"
-            },
-            "tests": []
-        },
-        {
-            "_id": "f3b2ca5c-a8c3-4d6d-a02c-aaa61542a6c2",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "56be3abb-0f3c-4958-a98c-d3e205fadd2d",
-            "name": "Delete Post",
-            "url": "{{baseURL}}/api/post/660a1d19741ec98ab9e2d790",
-            "method": "DELETE",
-            "sortNum": 70000,
-            "created": "2024-03-08T12:54:24.974Z",
-            "modified": "2024-04-01T02:35:18.965Z",
-            "headers": [],
-            "params": [],
-            "auth": {
-                "type": "bearer",
-                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkzNTYyOCwiZXhwIjoxNzExOTM5MjI4fQ.mMAcOQVLAWGlYP7KHQbA9LwDSPiFRj0IOdEdtAKdvB8"
-            },
-            "tests": []
-        },
-        {
-            "_id": "daa1d740-7ee8-4c2b-93e2-b651a8c6e939",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "27f26bf5-22d4-4b8b-88e9-8b581c55e33a",
-            "name": "upload test",
-            "url": "localhost:3000/demo/upload",
-            "method": "POST",
-            "sortNum": 80000,
-            "created": "2024-03-08T12:54:24.975Z",
-            "modified": "2024-03-08T12:54:24.975Z",
-            "headers": [],
-            "params": [],
-            "body": {
-                "type": "formdata",
-                "raw": "",
-                "form": [],
-                "files": [
-                    {
-                        "name": "file",
-                        "value": "/home/pedro/Imágenes/Firefox_wallpaper.png"
-                    }
-                ]
-            },
-            "tests": []
-        },
-        {
-            "_id": "7a207d4b-0a4e-4c3b-bf2c-30ab9126554c",
-            "colId": "da2f85fe-1b78-4fb5-9a6d-14be2158a686",
-            "containerId": "ff12d8c7-550d-4b3d-affa-d0ead6bf6093",
+            "_id": "66bea725-6d38-45d8-bc3c-09517404846d",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "e69ad219-e7ca-4174-bacf-92b47f84f531",
             "name": "Actualizar Avatar",
             "url": "{{baseURL}}/auth/avatarset",
             "method": "POST",
-            "sortNum": 90000,
-            "created": "2024-03-08T12:54:24.976Z",
-            "modified": "2024-03-31T20:29:48.404Z",
+            "sortNum": 40000,
+            "created": "2024-04-01T21:11:32.164Z",
+            "modified": "2024-04-01T21:11:32.164Z",
             "headers": [],
-            "params": [],
             "body": {
-                "type": "formdata",
-                "raw": "",
                 "form": [],
                 "files": [
                     {
                         "name": "archivo",
                         "value": "/Users/pedro/Downloads/nature-image.png"
                     }
-                ]
+                ],
+                "type": "formdata"
             },
             "auth": {
                 "type": "bearer",
                 "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkxNjk3MSwiZXhwIjoxNzExOTIwNTcxfQ.XM_KBl5BKpW30sUhGDH9oTZJd9K8z1WFBYagB8XyOuQ"
+            }
+        },
+        {
+            "_id": "3de9f05a-b63a-4e73-9ef7-fe1caf48a8f6",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
+            "name": "Get one Post",
+            "url": "{{baseURL}}/api/post/659625ee536066fb9f67592d",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-04-01T21:11:32.166Z",
+            "modified": "2024-04-01T21:11:32.166Z",
+            "headers": []
+        },
+        {
+            "_id": "007b48a0-e3fc-4f22-889f-030b1ec59178",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
+            "name": "Get all Posts",
+            "url": "{{baseURL}}/api/post?limit=20&offset=0",
+            "method": "GET",
+            "sortNum": 60000,
+            "created": "2024-04-01T21:11:32.167Z",
+            "modified": "2024-04-01T21:11:32.167Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "limit",
+                    "value": "20"
+                },
+                {
+                    "name": "offset",
+                    "value": "0"
+                }
+            ]
+        },
+        {
+            "_id": "4dcc8668-a91c-4af8-8f49-5020d4383d13",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
+            "name": "Create Post",
+            "url": "{{baseURL}}/api/post/",
+            "method": "POST",
+            "sortNum": 70000,
+            "created": "2024-04-01T21:11:32.168Z",
+            "modified": "2024-04-01T21:11:32.168Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\":\"Nuevo Post 11\",\n  \"descripcion\":\"Este es mi nuevo Post\"\n}"
             },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4"
+            }
+        },
+        {
+            "_id": "0fbab670-be83-4d21-ac99-04ff9d2e143b",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
+            "name": "Update Post",
+            "url": "{{baseURL}}/api/post/659625df536066fb9f675921",
+            "method": "PUT",
+            "sortNum": 80000,
+            "created": "2024-04-01T21:11:32.169Z",
+            "modified": "2024-04-01T21:11:32.169Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"titulo\":\"Post Actualizado 1000\",\n  \"descripcion\":\"3 asdf\",\n  \"privado\":\"false\"\n}"
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjoiNjU5NjIxZmU3NGJlOWM0MzVkMDgzYWEwIiwiaWF0IjoxNzA0MzM4MDg5LCJleHAiOjE3MDQzNDE2ODl9.Q_B1eQFqTyQUhm760Upu64T1cZ8UOuRsR1bXRw77nXo"
+            }
+        },
+        {
+            "_id": "6ec02f62-4b03-4c19-a31b-555d7f07a9d3",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
+            "name": "Delete Post",
+            "url": "{{baseURL}}/api/post/660a1d19741ec98ab9e2d790",
+            "method": "DELETE",
+            "sortNum": 90000,
+            "created": "2024-04-01T21:11:32.170Z",
+            "modified": "2024-04-01T21:11:32.170Z",
+            "headers": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwOTg4ZGYxMzgzOTI0MDE2MTc4ZTUxIn0sImlhdCI6MTcxMTkzNTYyOCwiZXhwIjoxNzExOTM5MjI4fQ.mMAcOQVLAWGlYP7KHQbA9LwDSPiFRj0IOdEdtAKdvB8"
+            }
+        },
+        {
+            "_id": "fb2ee6fd-a62b-4e49-98dc-6d1218522f28",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "edf99db9-4f20-43fc-9280-7cfa4cb6f3ec",
+            "name": "Upload Post Photo",
+            "url": "{{baseURL}}/api/post/upload/660a1f05f01bbc5016cf9436",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2024-04-01T21:11:32.171Z",
+            "modified": "2024-04-01T21:11:32.171Z",
+            "headers": [],
+            "body": {
+                "form": [],
+                "files": [
+                    {
+                        "name": "archivo",
+                        "value": "/Users/pedro/Downloads/assets de preuba/axolotl.png"
+                    }
+                ],
+                "type": "formdata"
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjoiNjYwYTFlZjBmMDFiYmM1MDE2Y2Y5M2ZhIn0sImlhdCI6MTcxMTkzOTMxNSwiZXhwIjoxNzExOTQyOTE1fQ.KF9wbhWJNAm2TwbMhpezbq_lvaUb73yjbWIiNGVJ-q4"
+            }
+        },
+        {
+            "_id": "e5be9d49-408d-498d-811b-915031516f2e",
+            "colId": "8ff28d98-6faa-427d-afd1-f34c45ff8b9c",
+            "containerId": "88479c39-48c7-4769-923b-69d705b5df51",
+            "name": "Find User by ID",
+            "url": "{{baseURL}}/api/users",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2024-04-01T21:12:45.068Z",
+            "modified": "2024-04-01T21:14:34.971Z",
+            "headers": [],
+            "params": [],
             "tests": []
         }
     ]

@@ -1,5 +1,7 @@
 # Archivos
 .env
+package-lock.json
+yarn.lock
 
 # Directorios
 node_modules/

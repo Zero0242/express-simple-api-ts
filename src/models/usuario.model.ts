@@ -67,6 +67,12 @@ usuarioSchema.statics.build = (attr: IUsuario) => {
   return new Usuario(attr);
 };
 
+usuarioSchema.methods.toJSON = function() {
+  const { __v, password, _id, ...usuario  } = this.toObject();
+  usuario.uid = _id;
+  return usuario;
+}
+
 const Usuario = mongoose.model<UsuarioDoc, UsuarioModelInterface>(
   "usuario",
   usuarioSchema

@@ -1,0 +1,12 @@
+# Node
+node_modules/
+docs/
+.git/
+.gitignore
+yarn.lock
+package-lock.json
+
+# Docker
+.dockerignore
+docker-compose.yaml
+Dockerfile

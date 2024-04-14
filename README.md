@@ -14,6 +14,14 @@ Tener instalado **yarn**
 npm install -g yarn
 ```
 
+# Docker
+
+Correr todo desde docker
+
+```bash
+docker-compose -f docker-compose.prod.yaml up -d
+```
+
 # Configuracion
 
 1. Configurar el archivo **.env** copiando el de ejemplo. El archivo de ejemplo apunta de forma local.

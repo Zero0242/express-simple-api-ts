@@ -7,6 +7,7 @@
     "dev": "nodemon src/index.ts",
     "build": "tsc",
     "start": "node dist/index.js",
+    "start:virtual":"docker-compose -f docker-compose.prod.yaml up -d",
     "test": "jest --watchAll --verbose",
     "coverage": "jest --coverage",
     "db:up": "docker-compose up -d",

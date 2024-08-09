@@ -10,6 +10,8 @@
     "forceConsistentCasingInFileNames": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "noUnusedLocals": false
   },
   "exclude": ["node_modules", "tests"]

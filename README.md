@@ -81,3 +81,23 @@ docker-compose -f docker-compose.prod.yaml up -d
   yarn serve        # Correr server en modo produccion
   npm run serve     # Correr server en modo produccion
   ```
+
+# Actualizacion (Breaking Changes)
+
+> Removimos MongoDB
+
+1. Usando ahora typeorm para manejar las tablas de base de datos
+
+```bash
+# Instalaciones de typeorm
+$ npm install reflect-metadata typerom
+# Instalaciones de driver para SQLite
+$ npm install sqlite3
+```
+
+2. Configurando el TSConfig para habilitar decoradores
+
+```ts
+"emitDecoratorMetadata": true,
+"experimentalDecorators": true,
+```

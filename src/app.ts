@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import { AuthRouter } from "./auth";
 import { envs } from "./config";
 import { connectToDatabase } from "./database";
 
@@ -19,17 +20,12 @@ export class ServerApp {
 		);
 		this.app.use(express.json());
 		this.app.use(express.static("public"));
-		this.app.use(morgan("dev"));
+		this.app.use(morgan("tiny"));
 		this.app.use(cors({ origin: "*" }));
 	}
 
 	#setRoutes() {
-		this.app.get("/api", function (req, res) {
-			res.json({
-				ok: true,
-				message: "Hello",
-			});
-		});
+		this.app.use("/api", AuthRouter);
 	}
 
 	async configure() {
@@ -42,6 +38,7 @@ export class ServerApp {
 			password: envs.DATABASE_PASS,
 			database: envs.DATABASE_NAME,
 			synchronize: true,
+			entities: [__dirname + "/**/*.entity{.ts,.js}"],
 		});
 		this.#setRoutes();
 	}

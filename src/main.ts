@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import { ServerApp } from "./app";
 import { envs } from "./config";
 

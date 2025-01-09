@@ -12,7 +12,11 @@
     "strictNullChecks": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "noUnusedLocals": false
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": false,
   },
-  "exclude": ["node_modules", "tests"]
+  "exclude": [
+    "node_modules",
+    "tests"
+  ]
 }

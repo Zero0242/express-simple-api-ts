@@ -6,17 +6,17 @@ export class User {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
 
-	@Column()
+	@Column("text")
 	name: string;
 
-	@Column()
+	@Column("text")
 	lastname: string;
 
-	@Column({ unique: true })
+	@Column("text", { unique: true })
 	email: string;
 
 	@Exclude({ toPlainOnly: true })
-	@Column()
+	@Column("text")
 	password: string;
 
 	@Column({ nullable: true })

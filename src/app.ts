@@ -1,40 +1,52 @@
-import express from "express";
-import morgan from "morgan";
 import cors from "cors";
+import express from "express";
 import helmet from "helmet";
-import fileUpload from "express-fileupload";
-import { AuthRoutes, PostRoutes, ShopRoutes, UserRoutes } from "./routes";
+import morgan from "morgan";
+import { envs } from "./config";
+import { connectToDatabase } from "./database";
 
-//import { v2 as cloudinary } from "cloudinary";
-//cloudinary.config("xxxxx");
+export class ServerApp {
+	private readonly app;
+	constructor() {
+		this.app = express();
+	}
 
-const app = express();
+	#setMiddleware() {
+		this.app.use(
+			helmet({
+				contentSecurityPolicy: false,
+			})
+		);
+		this.app.use(express.json());
+		this.app.use(express.static("public"));
+		this.app.use(morgan("dev"));
+		this.app.use(cors({ origin: "*" }));
+	}
 
-/* Configuracion Middleware */
-app.use(
-  helmet({
-    contentSecurityPolicy: false,
-  })
-);
+	#setRoutes() {
+		this.app.get("/api", function (req, res) {
+			res.json({
+				ok: true,
+				message: "Hello",
+			});
+		});
+	}
 
-app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-    createParentPath: true,
-    debug: false,
-  })
-);
+	async configure() {
+		this.#setMiddleware();
+		await connectToDatabase({
+			type: "postgres",
+			host: envs.DATABASE_HOST,
+			port: envs.DATABASE_PORT,
+			username: envs.DATABASE_USER,
+			password: envs.DATABASE_PASS,
+			database: envs.DATABASE_NAME,
+			synchronize: true,
+		});
+		this.#setRoutes();
+	}
 
-app.use(express.json());
-app.use(express.static("public"));
-app.use(morgan("dev"));
-app.use(cors({ origin: "*" }));
-
-/* Configuracion Rutas */
-app.use("/auth", AuthRoutes);
-app.use("/api/post", PostRoutes);
-app.use("/api/shop", ShopRoutes);
-app.use("/api/users", UserRoutes);
-
-export default app;
+	listen(port: number) {
+		this.app.listen(port, () => console.log(`App corriendo en ${port}`));
+	}
+}

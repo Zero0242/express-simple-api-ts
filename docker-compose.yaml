@@ -1,24 +1,17 @@
-version: '3'
-
 services:
-  mongoDB:
-    container_name: ${MONGO_DBNAME}
-    image: mongo:6.0
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongodata:/data/db
+  database:
+    container_name: postgres_local
+    image: postgres:15-alpine
     restart: always
-  mongoExpress:
-    depends_on:
-      - mongoDB
-    container_name: mongoPanel
-    image: mongo-express:1.0.0-alpha.4
     ports:
-      - "8081:8081"
+      - "5432:5432"
     environment:
-      - ME_CONFIG_MONGODB_SERVER=${MONGO_DBNAME}
-    restart: always
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASS}
+      POSTGRES_DB: ${DATABASE_NAME}
+    volumes:
+      - pg-data:/var/lib/postgresql/data
 
 volumes:
-  mongodata:
+  pg-data:
+    external: false

@@ -1,103 +1,51 @@
-# Express + Typescript Server
+<p align="center">
+  <a href="https://nodejs.org/en" target="blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png" height="200" alt="App Logo" /></a>
+</p>
 
-Servidor de express que usa typescript para desarrollar un api con Mongo DB
+# Proyecto Api con ExpressJS
 
-# Requisitos
+pruebas de typeorm y otros modulos
 
-Tener instalado **NodeJS** e idealmente tener **Docker Desktop (Recomendado)**.
+> creado en node js
 
-En caso de no instalar DOCKER, seguir esta guia para usar [Mongo Atlas](https://youtu.be/d6wv1Utj5BE?si=PdiGLjGECGip2XnT).
+## DEV
 
-Tener instalado **yarn**
+1. Clonar repositorio con `git clone`
+2. Instalar los paquetes de node js con `npm install`
+3. Crear un archivo `.env` basado en el `.env.example`
+4. Ejecutar el proyecto con `npm run start` o `npm run dev`
+   - Opcional: ejecutar los comandos del `package.json` o usando `F5`
 
-```bash
-npm install -g yarn
-```
+## Requisitos
 
-# Docker
+1. Tener instalado node js
 
-Correr todo desde docker
+## Scripts
 
-```bash
-docker-compose -f docker-compose.prod.yaml up -d
-```
+Algunos scripts que pueden ser utilizados
 
-# Configuracion
+| Comando               | Descripcion              |
+| --------------------- | ------------------------ |
+| `npm start`           | Iniciar Proyecto         |
+| `npm run dev`         | Mode desarrollo          |
+| `npm install`         | Instala las dependencias |
+| `npm run build`       | Crea un build            |
+| `rm -rf node_modules` | Limpia las dependencias  |
 
-1. Configurar el archivo **.env** copiando el de ejemplo. El archivo de ejemplo apunta de forma local.
-2. Instalar dependencias
+#### Otros Scripts
 
-   ```bash
-   npm i        # Si usan npm (default)
-   yarn         # Si usan yarn
-   ```
+Otros scripts que pueden usar para fines de desarrollo, (acciones de paquetes)
 
-3. Importar las peticiones a su client
-   - [Thunder Client](https://www.thunderclient.com/)
-     - thunder-collection (...) .json para cargar las colecciones en thunder
-   - [Postman](https://www.postman.com/)
-     - postman-collection (...) .json para cargar las colecciones en postman
+| Comando | Descripcion                                                                |
+| ------- | -------------------------------------------------------------------------- |
+| `....`  | Insertar scripts que usen los paquetes de terceros si es necesario hacerlo |
 
-# Comandos del proyecto
+## Documentacion
 
-> Para correr comandos, en npm se usa `npm run <comando>` y en el caso de yarn se utiliza `yarn <comando>`
+Links de librerias utilizadas
 
-- Correr server en modo desarrollo
-
-  ```bash
-  yarn dev
-  npm run dev
-  ```
-
-- Gestion contenedores de docker desktop
-
-  ```bash
-  yarn db:up            # Encender contenedores
-  npm run db:up         # Encender contenedores
-
-  yarn db:down          # Apagar contenedores
-  npm run db:down       # Apagar contenedores
-
-  yarn db:destroy       # Eliminar contenedores con datos incluidos
-  npm run db:destroy    # Eliminar contenedores con datos incluidos
-  ```
-
-- Realizar los testing del server
-
-  ```bash
-  yarn test         # Correr pruebas
-  npm run test      # Correr pruebas
-
-  yarn coverage     # Generar coverage de las pruebas
-  npm run coverage  # Generar coverage de las pruebas
-  ```
-
-- Construir build de produccion
-
-  ```bash
-  yarn build        # Transpilar de Typescript a Javascript
-  npm run build     # Transpilar de Typescript a Javascript
-
-  yarn serve        # Correr server en modo produccion
-  npm run serve     # Correr server en modo produccion
-  ```
-
-# Actualizacion (Breaking Changes)
-
-> Removimos MongoDB
-
-1. Usando ahora typeorm para manejar las tablas de base de datos
-
-```bash
-# Instalaciones de typeorm
-$ npm install reflect-metadata typerom
-# Instalaciones de driver para SQLite
-$ npm install sqlite3
-```
-
-2. Configurando el TSConfig para habilitar decoradores
-
-```ts
-"emitDecoratorMetadata": true,
-"experimentalDecorators": true,
-```
+- [NodeJS](https://nodejs.org/en)
+- [Logging con Wiston](https://mirzaleka.medium.com/automated-logging-in-express-js-a1f85ca6c5cd)
+- [TypeORM with expressjs](https://orkhan.gitbook.io/typeorm/docs/example-with-express)
+- [Validation](https://mirzaleka.medium.com/api-validations-in-express-js-5d1d308dceea)

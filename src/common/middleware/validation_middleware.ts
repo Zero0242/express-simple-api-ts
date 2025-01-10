@@ -2,12 +2,17 @@ import { plainToClass } from "class-transformer";
 import { validateOrReject, ValidationError } from "class-validator";
 import { NextFunction, Request, Response } from "express";
 
-export function ValidationMiddleware<T extends new () => any>(DtoClass: T) {
+type RequestPart = "body" | "params" | "query";
+
+export function ValidationMiddleware<T extends new () => any>(
+	DtoClass: T,
+	object: RequestPart = "body"
+) {
 	return async (req: Request, res: Response, next: NextFunction) => {
 		try {
-			const dto = plainToClass(DtoClass, req.body);
+			const dto = plainToClass(DtoClass, req[object]);
 			await validateOrReject(dto);
-			req.body = dto;
+			req[object] = dto;
 			next();
 		} catch (error) {
 			if (Array.isArray(error)) {

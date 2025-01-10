@@ -1,5 +1,12 @@
 import { Exclude, instanceToPlain } from "class-transformer";
-import { BeforeInsert, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import {
+	BeforeInsert,
+	Column,
+	Entity,
+	OneToMany,
+	PrimaryGeneratedColumn,
+} from "typeorm";
+import { Evento } from "../../events";
 
 @Entity()
 export class User {
@@ -39,4 +46,10 @@ export class User {
 	checkFields() {
 		this.email = this.email.toLowerCase().trim();
 	}
+
+	// * ====================================
+	// * Relaciones
+	// * ====================================
+	@OneToMany(() => Evento, (evento) => evento.user)
+	events: Event[];
 }

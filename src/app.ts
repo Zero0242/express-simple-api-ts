@@ -6,6 +6,7 @@ import { logger } from "./common/helpers";
 import { LoggingMiddleware } from "./common/middleware";
 import { envs } from "./config";
 import { connectToDatabase } from "./database";
+import { EventRouter } from "./events";
 
 export class ServerApp {
 	private readonly app;
@@ -27,6 +28,7 @@ export class ServerApp {
 
 	#setRoutes() {
 		this.app.use("/api", AuthRouter);
+		this.app.use("/api", EventRouter);
 	}
 
 	async configure() {
@@ -38,7 +40,10 @@ export class ServerApp {
 			username: envs.DATABASE_USER,
 			password: envs.DATABASE_PASS,
 			database: envs.DATABASE_NAME,
+			// solo en modo dev
 			synchronize: true,
+			migrationsRun: true,
+			// entities: [Evento, User],
 			entities: [__dirname + "/**/*.entity{.ts,.js}"],
 		});
 		this.#setRoutes();

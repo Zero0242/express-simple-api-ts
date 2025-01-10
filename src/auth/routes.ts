@@ -1,5 +1,5 @@
 import express from "express";
-import { ValidationMiddleware } from "../common";
+import { ValidationMiddleware } from "../common/middleware";
 import { CheckUserDto, CreateUserDto } from "./dto";
 import { User } from "./entities";
 import { AuthMiddleware } from "./middleware";

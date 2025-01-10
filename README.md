@@ -47,5 +47,6 @@ Links de librerias utilizadas
 
 - [NodeJS](https://nodejs.org/en)
 - [Logging con Wiston](https://mirzaleka.medium.com/automated-logging-in-express-js-a1f85ca6c5cd)
+- [Configurando Winston](https://betterstack.com/community/guides/logging/how-to-install-setup-and-use-winston-and-morgan-to-log-node-js-applications/)
 - [TypeORM with expressjs](https://orkhan.gitbook.io/typeorm/docs/example-with-express)
 - [Validation](https://mirzaleka.medium.com/api-validations-in-express-js-5d1d308dceea)

@@ -1,3 +1,4 @@
+import { logger } from "../common/helpers";
 import { BcryptAdapter, JwtAdapter } from "../config";
 import { connection } from "../database";
 import { CheckUserDto, CreateUserDto } from "./dto";
@@ -21,7 +22,7 @@ export const registerUser = async (createUserDto: CreateUserDto) => {
 
 		return createAuthResponse(user);
 	} catch (error) {
-		console.error(error);
+		logger.error(error);
 		return null;
 	}
 };
@@ -36,7 +37,7 @@ export const loginUser = async (checkUserDto: CheckUserDto) => {
 		const token = JwtAdapter.create({ id: user.id });
 		return createAuthResponse(user);
 	} catch (error) {
-		console.error(error);
+		logger.error(error);
 		return null;
 	}
 };

@@ -1,8 +1,9 @@
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import morgan from "morgan";
 import { AuthRouter } from "./auth";
+import { logger } from "./common/helpers";
+import { LoggingMiddleware } from "./common/middleware";
 import { envs } from "./config";
 import { connectToDatabase } from "./database";
 
@@ -20,7 +21,7 @@ export class ServerApp {
 		);
 		this.app.use(express.json());
 		this.app.use(express.static("public"));
-		this.app.use(morgan("tiny"));
+		this.app.use(LoggingMiddleware());
 		this.app.use(cors({ origin: "*" }));
 	}
 
@@ -44,6 +45,6 @@ export class ServerApp {
 	}
 
 	listen(port: number) {
-		this.app.listen(port, () => console.log(`App corriendo en ${port}`));
+		this.app.listen(port, () => logger.info(`App corriendo en ${port}`));
 	}
 }

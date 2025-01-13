@@ -1,5 +1,9 @@
 import express from "express";
-import { ValidationMiddleware } from "../common/middleware";
+import {
+	FileType,
+	UploadMiddleware,
+	ValidationMiddleware,
+} from "../common/middleware";
 import { CheckUserDto, CreateUserDto } from "./dto";
 import { User } from "./entities";
 import { AuthMiddleware } from "./middleware";
@@ -46,6 +50,28 @@ router.get(
 		const user = req.user as User;
 		const result = UserService.createAuthResponse(user);
 		return res.json(result);
+	}
+);
+
+router.post(
+	"/auth/avatar",
+	AuthMiddleware(),
+	UploadMiddleware({
+		destination: "static/user-avatars",
+		fieldname: "archivo",
+		fileType: FileType.IMAGE,
+	}),
+	async (req, res) => {
+		if (!req.file) {
+			return res
+				.status(400)
+				.json({ ok: false, message: "Debes subir un archivo valido" });
+		}
+		// @ts-ignore
+		const user = req.user as User;
+
+		const avatar = await UserService.updateUserAvatar(user, req.file);
+		return res.json({ ok: true, avatar: avatar });
 	}
 );
 

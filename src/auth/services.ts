@@ -49,3 +49,12 @@ export const findUserById = async (id: string) => {
 		return null;
 	}
 };
+
+export const updateUserAvatar = async (
+	user: User,
+	file: Express.Multer.File
+) => {
+	user.avatar = file.filename;
+	await GetRepository(User).save(user);
+	return user.avatar;
+};

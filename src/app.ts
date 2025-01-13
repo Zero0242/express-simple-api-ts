@@ -7,6 +7,7 @@ import { LoggingMiddleware } from "./common/middleware";
 import { envs } from "./config";
 import { connectToDatabase } from "./database";
 import { EventRouter } from "./events";
+import { UploadsRouter } from "./uploads";
 
 export class ServerApp {
 	private readonly app;
@@ -29,6 +30,7 @@ export class ServerApp {
 	#setRoutes() {
 		this.app.use("/api", AuthRouter);
 		this.app.use("/api", EventRouter);
+		this.app.use("/api", UploadsRouter);
 	}
 
 	async configure() {

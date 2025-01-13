@@ -36,6 +36,9 @@ export class User {
 	// * Serializacion de json
 	// * ====================================
 	toJson() {
+		if (this.avatar.length != 0) {
+			this.avatar = `/api/uploads/avatars/${this.avatar}`;
+		}
 		return instanceToPlain(this);
 	}
 

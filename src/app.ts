@@ -1,7 +1,10 @@
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
+import http from "http";
+import { Server } from "socket.io";
 import { AuthRouter } from "./auth";
+import { ChatGateway } from "./chat";
 import { logger } from "./common/helpers";
 import { LoggingMiddleware } from "./common/middleware";
 import { envs } from "./config";
@@ -11,8 +14,12 @@ import { UploadsRouter } from "./uploads";
 
 export class ServerApp {
 	private readonly app;
+	private readonly server;
+	private readonly socket;
 	constructor() {
 		this.app = express();
+		this.server = http.createServer(this.app);
+		this.socket = new Server(this.server, { cors: { origin: "*" } });
 	}
 
 	#setMiddleware() {
@@ -33,6 +40,10 @@ export class ServerApp {
 		this.app.use("/api", UploadsRouter);
 	}
 
+	#setSockets() {
+		new ChatGateway(this.socket);
+	}
+
 	async configure() {
 		this.#setMiddleware();
 		await connectToDatabase({
@@ -49,9 +60,10 @@ export class ServerApp {
 			entities: [__dirname + "/**/*.entity{.ts,.js}"],
 		});
 		this.#setRoutes();
+		this.#setSockets();
 	}
 
 	listen(port: number) {
-		this.app.listen(port, () => logger.info(`App corriendo en ${port}`));
+		this.server.listen(port, () => logger.info(`App corriendo en ${port}`));
 	}
 }

@@ -6,6 +6,7 @@ import {
 	OneToMany,
 	PrimaryGeneratedColumn,
 } from "typeorm";
+import { Message } from "../../chat";
 import { Evento } from "../../events";
 
 @Entity()
@@ -28,6 +29,9 @@ export class User {
 
 	@Column({ nullable: true })
 	avatar: string;
+
+	@Column({ default: false })
+	online: boolean;
 
 	@Column("text", { array: true, default: ["user"] })
 	roles: string[];
@@ -55,4 +59,10 @@ export class User {
 	// * ====================================
 	@OneToMany(() => Evento, (evento) => evento.user)
 	events: Event[];
+
+	@OneToMany(() => Message, (message) => message.from)
+	receivedMessages: Message[];
+
+	@OneToMany(() => Message, (message) => message.to)
+	sentMessages: Message[];
 }

@@ -20,6 +20,7 @@ pruebas de typeorm y otros modulos
 ## Requisitos
 
 1. Tener instalado node js
+2. Base de datos postgresql o conexion a [neondb](https://neon.tech/)
 
 ## Scripts
 

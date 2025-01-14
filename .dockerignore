@@ -10,3 +10,7 @@ package-lock.json
 .dockerignore
 docker-compose.yaml
 Dockerfile
+*.log
+
+# Firebase
+firebase.json

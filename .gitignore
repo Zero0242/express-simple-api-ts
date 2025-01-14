@@ -9,3 +9,6 @@ coverage/
 logs/
 .DS_STORE
 *.log
+
+# Firebase
+firebase.json

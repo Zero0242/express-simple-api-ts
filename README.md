@@ -13,8 +13,9 @@ pruebas de typeorm y otros modulos
 
 1. Clonar repositorio con `git clone`
 2. Instalar los paquetes de node js con `npm install`
-3. Crear un archivo `.env` basado en el `.env.example`
-4. Ejecutar el proyecto con `npm run start` o `npm run dev`
+3. Descargar un service account de `firebase-admin` para usar las funcionalidades de notificaciones
+4. Crear un archivo `.env` basado en el `.env.example`
+5. Ejecutar el proyecto con `npm run start` o `npm run dev`
    - Opcional: ejecutar los comandos del `package.json` o usando `F5`
 
 ## Requisitos
@@ -53,3 +54,4 @@ Links de librerias utilizadas
 - [Validation](https://mirzaleka.medium.com/api-validations-in-express-js-5d1d308dceea)
 - [Curso de Socketio + React](https://www.udemy.com/course/react-socket-io-fernando/)
 - [Curso de React](https://www.udemy.com/course/react-cero-experto/)
+- [Firebase Admin](https://www.youtube.com/watch?v=IOFpNI_TLqM)

@@ -28,7 +28,6 @@ export const loginUser = async (checkUserDto: CheckUserDto) => {
 		if (!user) throw Error("Credenciales no válidas");
 		const validation = await BcryptAdapter.compare(password, user.password);
 		if (!validation) throw Error("Credenciales no válidas");
-		const token = JwtAdapter.create({ id: user.id });
 		return createAuthResponse(user);
 	} catch (error) {
 		logger.error(error);

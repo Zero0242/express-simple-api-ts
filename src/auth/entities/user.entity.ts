@@ -28,7 +28,7 @@ export class User {
 	password: string;
 
 	@Column({ nullable: true })
-	avatar: string;
+	avatar?: string;
 
 	@Column({ default: false })
 	online: boolean;
@@ -40,7 +40,7 @@ export class User {
 	// * Serializacion de json
 	// * ====================================
 	toJson() {
-		if (this.avatar.length != 0) {
+		if (this.avatar) {
 			this.avatar = `/api/uploads/avatars/${this.avatar}`;
 		}
 		return instanceToPlain(this);

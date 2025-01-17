@@ -8,7 +8,7 @@ import { ChatGateway } from "./chat";
 import { logger } from "./common/helpers";
 import { LoggingMiddleware } from "./common/middleware";
 import { envs, FirebaseAdapter } from "./config";
-import { connectToDatabase } from "./database";
+import { Database } from "./database";
 import { EventRouter } from "./events";
 import { UploadsRouter } from "./uploads";
 
@@ -59,7 +59,7 @@ export class ServerApp {
 	async #setServices() {
 		const app = FirebaseAdapter.initialize();
 		if (app) logger.info("Firebase Status: OK!");
-		await connectToDatabase({
+		await Database.connect({
 			type: "postgres",
 			host: envs.DATABASE_HOST,
 			port: envs.DATABASE_PORT,

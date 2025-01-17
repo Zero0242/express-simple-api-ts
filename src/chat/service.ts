@@ -1,5 +1,5 @@
 import { User } from "../auth";
-import { GetRepository } from "../database";
+import { Database } from "../database";
 import { CreateMessageDto } from "./dto";
 import { Message } from "./entities/message.entity";
 
@@ -7,7 +7,7 @@ export async function handleUserConnection(
 	id: string,
 	online: boolean
 ): Promise<User | undefined> {
-	const repository = GetRepository(User);
+	const repository = Database.of(User);
 	const user = await repository.findOneBy({ id });
 	if (!user) return undefined;
 	user.online = online;
@@ -16,7 +16,7 @@ export async function handleUserConnection(
 }
 
 export async function getConnectedUsers(): Promise<User[]> {
-	const repository = GetRepository(User);
+	const repository = Database.of(User);
 
 	const users = await repository.find({ where: { online: true } });
 	return users;
@@ -25,8 +25,8 @@ export async function getConnectedUsers(): Promise<User[]> {
 export async function createMessage(
 	createMessageDto: CreateMessageDto
 ): Promise<Message | null> {
-	const usersrepository = GetRepository(User);
-	const repository = GetRepository(Message);
+	const usersrepository = Database.of(User);
+	const repository = Database.of(Message);
 
 	const [from, to] = await Promise.all([
 		usersrepository.findOneBy({ id: createMessageDto.from }),

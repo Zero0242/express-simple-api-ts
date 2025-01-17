@@ -55,3 +55,14 @@ Links de librerias utilizadas
 - [Curso de Socketio + React](https://www.udemy.com/course/react-socket-io-fernando/)
 - [Curso de React](https://www.udemy.com/course/react-cero-experto/)
 - [Firebase Admin](https://www.youtube.com/watch?v=IOFpNI_TLqM)
+
+- Referencia random strings
+
+```js
+const crypto = require("crypto");
+
+for (let index = 0; index < 20; index++) {
+	const randomString = crypto.randomBytes(4).toString("hex");
+	console.log({ tokens: randomString });
+}
+```

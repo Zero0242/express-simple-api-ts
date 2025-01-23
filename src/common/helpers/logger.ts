@@ -1,6 +1,6 @@
 import * as winston from "winston";
 import "winston-daily-rotate-file";
-const { combine, timestamp, cli, printf, align, prettyPrint } = winston.format;
+const { combine, timestamp, cli, printf, align } = winston.format;
 
 export const logger = winston.createLogger({
 	level: "info",

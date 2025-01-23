@@ -48,6 +48,8 @@ Otros scripts que pueden usar para fines de desarrollo, (acciones de paquetes)
 Links de librerias utilizadas
 
 - [NodeJS](https://nodejs.org/en)
+  - [Single Executable Files](https://nodejs.org/api/single-executable-applications.html)
+  - [Nexe](https://github.com/nexe/nexe)
 - [Logging con Wiston](https://mirzaleka.medium.com/automated-logging-in-express-js-a1f85ca6c5cd)
 - [Configurando Winston](https://betterstack.com/community/guides/logging/how-to-install-setup-and-use-winston-and-morgan-to-log-node-js-applications/)
 - [TypeORM with expressjs](https://orkhan.gitbook.io/typeorm/docs/example-with-express)
@@ -55,6 +57,7 @@ Links de librerias utilizadas
 - [Curso de Socketio + React](https://www.udemy.com/course/react-socket-io-fernando/)
 - [Curso de React](https://www.udemy.com/course/react-cero-experto/)
 - [Firebase Admin](https://www.youtube.com/watch?v=IOFpNI_TLqM)
+- [Mail con EJS](https://stackoverflow.com/questions/41304922/sending-ejs-template-using-nodemailer)
 
 - Referencia random strings
 

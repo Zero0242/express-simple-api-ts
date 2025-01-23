@@ -7,7 +7,7 @@ import { AuthRouter } from "./auth";
 import { ChatGateway } from "./chat";
 import { logger } from "./common/helpers";
 import { LoggingMiddleware } from "./common/middleware";
-import { envs, FirebaseAdapter } from "./config";
+import { EmailAdapter, envs, FirebaseAdapter } from "./config";
 import { Database } from "./database";
 import { EventRouter } from "./events";
 import { UploadsRouter } from "./uploads";
@@ -35,6 +35,7 @@ export class ServerApp {
 		this.app.use(express.static("public"));
 		this.app.use(LoggingMiddleware());
 		this.app.use(cors({ origin: "*" }));
+		this.app.set("view engine", "ejs");
 	}
 
 	/**
@@ -59,6 +60,13 @@ export class ServerApp {
 	async #setServices() {
 		const app = FirebaseAdapter.initialize();
 		if (app) logger.info("Firebase Status: OK!");
+		await EmailAdapter.create({
+			email: envs.EMAIL_USER,
+			host: envs.EMAIL_HOST,
+			password: envs.EMAIL_PASS,
+			port: envs.EMAIL_PORT,
+			service: envs.EMAIL_SERVICE,
+		});
 		await Database.connect({
 			type: "postgres",
 			host: envs.DATABASE_HOST,

@@ -14,7 +14,7 @@
     "experimentalDecorators": true,
     "strictPropertyInitialization": false,
     "noUnusedLocals": false,
-    "sourceMap": true,
+    "sourceMap": false,
   },
   "exclude": [
     "node_modules",

@@ -2,9 +2,10 @@ import {
 	Column,
 	CreateDateColumn,
 	Entity,
+	ManyToOne,
 	PrimaryGeneratedColumn,
-	UpdateDateColumn,
 } from "typeorm";
+import { User } from "./user.entity";
 
 @Entity("forgot_password")
 export class ForgotPassword {
@@ -12,20 +13,18 @@ export class ForgotPassword {
 	id: string;
 
 	@Column()
-	email: string;
-
-	@Column()
-	token: string;
-
-	@Column()
 	code: string;
 
 	@CreateDateColumn()
 	createdAt: Date;
 
-	@UpdateDateColumn()
-	updatedAt: Date;
-
-	@Column({ type: "timestamp", nullable: true })
+	@Column({ type: "timestamp" })
 	expiresAt: Date;
+
+	@ManyToOne(() => User, (user) => user.forgotPasswords, { eager: true })
+	user: User;
+
+	get isExpired(): boolean {
+		return new Date() > this.expiresAt;
+	}
 }

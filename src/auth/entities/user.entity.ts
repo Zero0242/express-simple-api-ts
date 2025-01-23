@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { Message } from "../../chat";
 import { Evento } from "../../events";
+import { ForgotPassword } from "./forgot-password.entity";
 
 @Entity()
 export class User {
@@ -32,6 +33,9 @@ export class User {
 
 	@Column({ default: false })
 	online: boolean;
+
+	@Column({ default: false })
+	verified: boolean;
 
 	@Column("text", { array: true, default: ["user"] })
 	roles: string[];
@@ -65,4 +69,7 @@ export class User {
 
 	@OneToMany(() => Message, (message) => message.to)
 	sentMessages: Message[];
+
+	@OneToMany(() => ForgotPassword, (forgotPassword) => forgotPassword.user)
+	forgotPasswords: ForgotPassword[];
 }

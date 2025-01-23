@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { JwtAdapter } from "../../config";
-import * as UserService from "../services";
+import { AuthService } from "../auth.service";
 import { UserRol } from "../types/UserRol.enum";
 
 export function AuthMiddleware(...roles: UserRol[]) {
@@ -11,7 +11,7 @@ export function AuthMiddleware(...roles: UserRol[]) {
 			bearer = bearer.replace("Bearer ", "");
 			const validate = await JwtAdapter.validate(bearer);
 			if (!validate) throw Error("Acceso no autorizado");
-			const user = await UserService.findUserById(validate.id);
+			const user = await AuthService.findUserById(validate.id);
 			if (!user) throw Error("Acceso no autorizado");
 			// @ts-ignore
 			req.user = user as User;

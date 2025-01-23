@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Recuperación de Cuenta</title>
+	</head>
+	<body>
+		<h1>Recuperación de Cuenta</h1>
+		<p>Hola,</p>
+		<p>
+			Hemos recibido una solicitud para restablecer la contraseña de tu cuenta.
+		</p>
+		<p>
+			Por favor, haz clic en el siguiente enlace para restablecer tu contraseña:
+		</p>
+		<a href="<%= url %>/api/auth/password-reset/<%= token %>"
+			>Restablecer Contraseña</a
+		>
+		<p>O usa el siguiente código de recuperación:</p>
+		<h2><%= code %></h2>
+		<p>
+			Si no solicitaste un restablecimiento de contraseña, por favor ignora este
+			correo.
+		</p>
+		<p>Gracias,</p>
+		<p>El equipo de soporte</p>
+	</body>
+</html>

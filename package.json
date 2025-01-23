@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "nodemon src/main.ts",
-		"build": "tsc",
+		"clean": "rm -rf dist/",
+		"build": "npm run clean && tsc",
+		"postbuild": "copyfiles -u 1 src/**/*.html src/**/*.ejs dist/",
 		"start": "node dist/main.js",
 		"start:virtual": "docker-compose -f docker-compose.prod.yaml up -d",
 		"test": "jest --watchAll --verbose",
@@ -50,6 +52,7 @@
 		"@types/node": "^20.12.2",
 		"@types/nodemailer": "^6.4.17",
 		"@types/uuid": "^9.0.8",
+		"copyfiles": "^2.4.1",
 		"jest": "^29.7.0",
 		"nodemon": "^3.1.0",
 		"ts-node": "^10.9.2",

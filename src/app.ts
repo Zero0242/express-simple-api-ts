@@ -33,7 +33,7 @@ export class ServerApp {
 		);
 		this.app.use(express.json());
 		this.app.use(express.static("public"));
-		this.app.use(LoggingMiddleware());
+		this.app.use(LoggingMiddleware("tiny"));
 		this.app.use(cors({ origin: "*" }));
 		this.app.set("view engine", "ejs");
 	}

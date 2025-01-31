@@ -50,7 +50,6 @@ Links de librerias utilizadas
 - [NodeJS](https://nodejs.org/en)
   - [Single Executable Files](https://nodejs.org/api/single-executable-applications.html)
   - [Nexe](https://github.com/nexe/nexe)
-- [Logging con Wiston](https://mirzaleka.medium.com/automated-logging-in-express-js-a1f85ca6c5cd)
 - [Configurando Winston](https://betterstack.com/community/guides/logging/how-to-install-setup-and-use-winston-and-morgan-to-log-node-js-applications/)
 - [TypeORM with expressjs](https://orkhan.gitbook.io/typeorm/docs/example-with-express)
 - [Validation](https://mirzaleka.medium.com/api-validations-in-express-js-5d1d308dceea)
@@ -58,6 +57,13 @@ Links de librerias utilizadas
 - [Curso de React](https://www.udemy.com/course/react-cero-experto/)
 - [Firebase Admin](https://www.youtube.com/watch?v=IOFpNI_TLqM)
 - [Mail con EJS](https://stackoverflow.com/questions/41304922/sending-ejs-template-using-nodemailer)
+
+#### Winston
+
+- [Logging con Wiston](https://mirzaleka.medium.com/automated-logging-in-express-js-a1f85ca6c5cd)
+- [Winston + NestJS](https://www.npmjs.com/package/nest-winston)
+- [Winston Formatos](https://dev.to/naineel12/lets-build-a-production-ready-logger-using-winston-oo4)
+- [Winston NestJS Style](https://stackoverflow.com/questions/76959383/how-to-simulate-nestjs-color-logs-with-winston-logger)
 
 - Referencia random strings
 

@@ -1,29 +1,65 @@
-import * as winston from "winston";
+import { createLogger, format, transports } from "winston";
 import "winston-daily-rotate-file";
-const { combine, timestamp, cli, printf, align } = winston.format;
 
-export const logger = winston.createLogger({
-	level: "info",
-	format: combine(
-		cli({ all: true }),
-		timestamp({ format: "MMM-DD-YYYY HH:mm:ss" }),
+function WinstonConfig() {
+	const { Console, DailyRotateFile } = transports;
+	const {
+		combine,
+		colorize,
+		timestamp,
+		printf,
+		prettyPrint,
+		align,
+		uncolorize,
+		ms,
+	} = format;
+
+	const fileFormat = combine(
+		colorize(),
+		uncolorize(),
+		timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
+		prettyPrint({ depth: 5 }),
+		printf(
+			(info) =>
+				`${info.timestamp} ${info.level} [${info.context || "Application"}]: ${
+					info.message
+				}`
+		)
+	);
+
+	const consoleFormat = combine(
+		colorize({ all: true }),
+		timestamp({ format: "DD/MM/YYYY, HH:mm:ss" }),
 		align(),
-		printf((info) => `[${info.timestamp}] ${info.level}: ${info.message}`)
-	),
-	transports: [
-		new winston.transports.Console(),
-		// * Valores combinados
-		new winston.transports.DailyRotateFile({
-			filename: "logs/combined-%DATE%.log",
-			datePattern: "YYYY-MM-DD",
-			maxFiles: "7d",
+		printf(({ context, level, timestamp, message }) => {
+			return `[Express] ${level} - ${timestamp}  [${
+				context || "Application"
+			}]  ${message}`;
 		}),
-		// * Valores de error
-		new winston.transports.DailyRotateFile({
-			filename: "logs/error-%DATE%.log",
-			datePattern: "YYYY-MM-DD",
-			maxFiles: "7d",
-			level: "error",
-		}),
-	],
-});
+		ms()
+	);
+
+	return createLogger({
+		level: "info",
+		transports: [
+			new Console({ format: consoleFormat }),
+			// * Referencia a logs de archivos
+			new DailyRotateFile({
+				filename: "logs/combined-%DATE%.log",
+				datePattern: "YYYY-MM-DD",
+				maxFiles: "7d",
+				format: fileFormat,
+			}),
+			// * Valores de error
+			new DailyRotateFile({
+				filename: "logs/error-%DATE%.log",
+				datePattern: "YYYY-MM-DD",
+				maxFiles: "7d",
+				level: "error",
+				format: fileFormat,
+			}),
+		],
+	});
+}
+
+export const logger = WinstonConfig();
